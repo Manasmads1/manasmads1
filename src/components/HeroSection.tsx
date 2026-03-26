@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Instagram, Mail, ArrowDown } from "lucide-react";
 
 const roles = [
-  "Creative Technologist",
-  "Freelancer & Content Creator",
-  "Turning Ideas into Impact",
+  "I build things that get noticed.",
+  "Code. Design. Create.",
+  "Turning ideas into impact since 2022.",
 ];
 
 const HeroSection = () => {
@@ -18,13 +19,13 @@ const HeroSection = () => {
 
     if (!deleting) {
       if (displayed.length < current.length) {
-        timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 60);
+        timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 50);
       } else {
-        timeout = setTimeout(() => setDeleting(true), 2000);
+        timeout = setTimeout(() => setDeleting(true), 2500);
       }
     } else {
       if (displayed.length > 0) {
-        timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 30);
+        timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 25);
       } else {
         setDeleting(false);
         setRoleIndex((prev) => (prev + 1) % roles.length);
@@ -33,73 +34,77 @@ const HeroSection = () => {
     return () => clearTimeout(timeout);
   }, [displayed, deleting, roleIndex]);
 
-  const scrollTo = (id: string) =>
-    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
-
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center section-padding overflow-hidden">
-      {/* Subtle grid background */}
-      <div className="absolute inset-0 opacity-[0.04]" style={{
-        backgroundImage: `linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)`,
-        backgroundSize: '60px 60px'
-      }} />
+    <section id="home" className="relative min-h-screen flex flex-col justify-center px-5 md:px-8 lg:px-16 overflow-hidden">
+      <div className="relative z-10 max-w-7xl mx-auto w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <h1 className="font-heading font-bold leading-[0.85] tracking-tight" style={{ fontSize: 'clamp(4rem, 14vw, 11rem)' }}>
+            <span className="block">MANAS</span>
+            <span className="block text-gradient">KUMAR</span>
+          </h1>
+        </motion.div>
 
-      <div className="relative z-10 max-w-3xl mx-auto text-center">
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+          className="h-px bg-primary my-6 md:my-8 origin-left max-w-2xl"
+        />
+
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-primary font-medium text-sm tracking-widest uppercase mb-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7 }}
+          className="text-[11px] md:text-xs font-body font-medium tracking-[0.35em] uppercase text-muted-foreground mb-6"
         >
-          Portfolio
+          Creative Technologist · Freelancer · Content Creator
         </motion.p>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-5xl md:text-7xl font-heading font-bold tracking-tight mb-6"
-        >
-          Manas<span className="text-gradient">.</span>
-        </motion.h1>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          className="text-xl md:text-2xl font-heading italic text-primary mb-6 h-9"
+          transition={{ delay: 0.9 }}
+          className="text-base md:text-lg font-body text-muted-foreground h-7 mb-8"
         >
-          <span>{displayed}</span>
+          <span className="italic">{displayed}</span>
           <span className="border-r-2 border-primary animate-cursor-blink ml-0.5">&nbsp;</span>
         </motion.div>
+      </div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed"
+      {/* Bottom bar */}
+      <div className="absolute bottom-8 left-5 md:left-8 lg:left-16 right-5 md:right-8 lg:right-16 flex items-end justify-between z-10">
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2 }}
+          onClick={() => document.querySelector("#work")?.scrollIntoView({ behavior: "smooth" })}
+          className="flex items-center gap-2 text-[10px] font-body tracking-[0.3em] uppercase text-muted-foreground hover:text-foreground transition-colors"
         >
-          19-year-old creator, coder, and storyteller — building real things that get noticed.
-        </motion.p>
+          Scroll to explore
+          <motion.span
+            animate={{ y: [0, 4, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          >
+            <ArrowDown size={12} />
+          </motion.span>
+        </motion.button>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2 }}
+          className="flex items-center gap-4"
         >
-          <button
-            onClick={() => scrollTo("#work")}
-            className="px-8 py-3 bg-primary text-primary-foreground font-medium rounded-md hover:bg-primary-glow transition-colors"
-          >
-            See My Work
-          </button>
-          <button
-            onClick={() => scrollTo("#contact")}
-            className="px-8 py-3 border border-primary text-primary font-medium rounded-md hover:bg-primary/10 transition-colors"
-          >
-            Let's Connect
-          </button>
+          <a href="https://instagram.com/manasmads1" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Instagram size={16} />
+          </a>
+          <a href="mailto:manas.kumar.3100@gmail.com" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Mail size={16} />
+          </a>
         </motion.div>
       </div>
     </section>

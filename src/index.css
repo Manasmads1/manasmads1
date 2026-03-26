@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,38 +6,38 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 92%;
+    --background: 0 0% 3%;
+    --foreground: 30 10% 93%;
 
     --card: 0 0% 7%;
-    --card-foreground: 0 0% 92%;
+    --card-foreground: 30 10% 93%;
 
     --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 92%;
+    --popover-foreground: 30 10% 93%;
 
     --primary: 4 70% 46%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 85%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 60%;
 
-    --muted: 0 0% 14%;
-    --muted-foreground: 0 0% 55%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 60%;
 
-    --accent: 0 100% 24%;
+    --accent: 0 100% 27%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
+    --border: 0 0% 11%;
+    --input: 0 0% 11%;
     --ring: 4 70% 46%;
 
-    --radius: 0.5rem;
+    --radius: 0.25rem;
 
     --primary-glow: 4 85% 55%;
-    --primary-deep: 0 100% 24%;
+    --primary-deep: 0 100% 27%;
 
     --sidebar-background: 0 0% 5%;
     --sidebar-foreground: 0 0% 92%;
@@ -57,6 +57,7 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
+    cursor: default;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -66,6 +67,34 @@
   html {
     scroll-behavior: smooth;
   }
+
+  ::selection {
+    background: hsl(4 70% 46% / 0.3);
+    color: hsl(30 10% 93%);
+  }
+}
+
+/* Noise/grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* Custom cursor (desktop) */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
+  a, button, [role="button"] {
+    cursor: none;
+  }
 }
 
 @layer utilities {
@@ -74,11 +103,41 @@
     background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
   }
 
-  .border-gradient {
-    border-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-deep))) 1;
-  }
-
   .section-padding {
     @apply px-5 py-20 md:px-8 lg:px-16 lg:py-28;
   }
+
+  .section-label {
+    @apply text-xs font-body font-medium tracking-[0.3em] uppercase text-primary mb-8 block;
+  }
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Cursor blink */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-cursor-blink {
+  animation: cursor-blink 1s step-end infinite;
+}
+
+/* Available dot pulse */
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.animate-dot-pulse {
+  animation: dot-pulse 2s ease-in-out infinite;
 }
