@@ -42,10 +42,12 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h1 className="font-heading font-bold leading-[0.85] tracking-tight" style={{ fontSize: 'clamp(4rem, 14vw, 11rem)' }}>
-            <span className="block">MANAS</span>
-            <span className="block text-gradient">KUMAR</span>
-          </h1>
+          <div className="flex items-center gap-6 md:gap-10">
+            <img src={avatar} alt="Manas avatar" className="w-24 h-24 md:w-36 md:h-36 lg:w-44 lg:h-44 rounded-full object-cover flex-shrink-0" />
+            <h1 className="font-heading font-bold leading-[0.85] tracking-tight" style={{ fontSize: 'clamp(4rem, 14vw, 11rem)' }}>
+              MANAS
+            </h1>
+          </div>
         </motion.div>
 
         <motion.div
