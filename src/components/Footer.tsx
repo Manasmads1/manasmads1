@@ -6,7 +6,7 @@ const Footer = () => (
     <div className="max-w-7xl mx-auto flex flex-col items-center text-center gap-6">
       <img src={logo} alt="M.A.D.S Logo" className="h-10 w-10 rounded-full object-cover" />
       <p className="text-[13px] tracking-[0.4em] uppercase font-body text-foreground">
-        Manas Mads
+        Manas
       </p>
       <p className="text-[11px] tracking-[0.2em] uppercase text-muted-foreground">
         Creative Technologist · Freelancer · India
@@ -22,7 +22,7 @@ const Footer = () => (
           <Mail size={16} />
         </a>
       </div>
-      <p className="text-[10px] text-muted-foreground">© 2025 Manas Mads. All rights reserved.</p>
+      <p className="text-[10px] text-muted-foreground">© 2025 Manas. All rights reserved.</p>
       <p className="text-[11px] italic text-primary">Built with intention.</p>
     </div>
   </footer>
