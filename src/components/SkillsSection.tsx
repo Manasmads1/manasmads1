@@ -1,68 +1,51 @@
-import SectionWrapper from "./SectionWrapper";
 import { motion } from "framer-motion";
 
-const categories = [
-  {
-    icon: "🎬",
-    title: "Video & Motion",
-    skills: ["Video Editing (CapCut — Intermediate)", "DaVinci Resolve — Beginner", "Alight Motion"],
-  },
-  {
-    icon: "🎨",
-    title: "Design & Visuals",
-    skills: ["Canva (Intermediate — full suite)", "Figma (Familiar)", "3D Modelling (Beginner)", "Ad Creation with AI Tools"],
-  },
-  {
-    icon: "💻",
-    title: "Tech & Code",
-    skills: ["Python", "HTML", "Professional Webpage Development", "Prompt Engineering (Beginner)"],
-  },
-  {
-    icon: "✍️",
-    title: "Content & Writing",
-    skills: ["Script Writing", "Content Creation", "Document Writing & Editing", "Presentation Creation"],
-  },
-  {
-    icon: "📱",
-    title: "Digital Marketing",
-    skills: ["Social Media Content Creation", "Affiliate Marketing (Active)", "Brand Ad Creation"],
-  },
+const skills = [
+  { name: "Video Editing (CapCut / DaVinci)", level: "INTERMEDIATE" },
+  { name: "Motion Graphics (Alight Motion)", level: "INTERMEDIATE" },
+  { name: "Canva Design (Full Suite)", level: "INTERMEDIATE" },
+  { name: "Python Development", level: "INTERMEDIATE" },
+  { name: "HTML & Webpage Building", level: "INTERMEDIATE" },
+  { name: "Script Writing & Content Creation", level: "PROFICIENT" },
+  { name: "Prompt Engineering", level: "BEGINNER" },
+  { name: "3D Modelling", level: "BEGINNER" },
+  { name: "AI-Assisted Ad Creation", level: "INTERMEDIATE" },
+  { name: "Document & Presentation Creation", level: "PROFICIENT" },
+  { name: "Affiliate Marketing", level: "ACTIVE" },
+  { name: "Social Media Creation", level: "CREATOR BY PASSION" },
 ];
 
 const SkillsSection = () => (
-  <SectionWrapper id="skills">
-    <h2 className="text-3xl md:text-4xl font-heading font-bold mb-2">
-      My <span className="text-gradient">Skills</span>
-    </h2>
-    <div className="w-16 h-0.5 bg-primary mb-4" />
-    <div className="inline-block bg-primary/10 border border-primary/20 rounded-full px-4 py-1.5 text-xs text-primary font-medium mb-10">
-      Creator by Passion, Not Just Profession
-    </div>
+  <section id="skills" className="section-padding max-w-7xl mx-auto">
+    <motion.span
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      className="section-label"
+    >
+      04 / Skills
+    </motion.span>
 
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {categories.map((cat, i) => (
+    <div className="space-y-0">
+      {skills.map((s, i) => (
         <motion.div
-          key={cat.title}
-          initial={{ opacity: 0, y: 20 }}
+          key={s.name}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: i * 0.1 }}
-          className="bg-card border border-border rounded-lg p-6 hover:border-primary/40 transition-colors"
+          transition={{ delay: i * 0.04 }}
+          className="group flex items-center justify-between py-4 md:py-5 border-b border-border hover:bg-card/40 hover:px-4 transition-all duration-300"
         >
-          <div className="text-2xl mb-3">{cat.icon}</div>
-          <h3 className="font-heading font-semibold text-lg mb-3">{cat.title}</h3>
-          <ul className="space-y-1.5 text-sm text-muted-foreground">
-            {cat.skills.map((s) => (
-              <li key={s} className="flex items-start gap-2">
-                <span className="text-primary mt-1 text-xs">▸</span>
-                {s}
-              </li>
-            ))}
-          </ul>
+          <span className="font-heading text-lg md:text-2xl font-medium group-hover:text-primary transition-colors duration-300">
+            {s.name}
+          </span>
+          <span className="text-[10px] md:text-[11px] tracking-[0.2em] uppercase border border-border text-muted-foreground rounded-full px-3 py-1 flex-shrink-0 ml-4">
+            {s.level}
+          </span>
         </motion.div>
       ))}
     </div>
-  </SectionWrapper>
+  </section>
 );
 
 export default SkillsSection;

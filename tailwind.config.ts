@@ -14,8 +14,12 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['"Playfair Display"', 'Georgia', 'serif'],
+        heading: ['"Cormorant Garamond"', 'Georgia', 'serif'],
         body: ['"DM Sans"', 'system-ui', 'sans-serif'],
+      },
+      fontSize: {
+        'hero': 'clamp(5rem, 15vw, 12rem)',
+        'hero-mobile': 'clamp(3rem, 12vw, 5rem)',
       },
       colors: {
         border: "hsl(var(--border))",
@@ -78,15 +82,10 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "typewriter-blink": {
-          "0%, 100%": { borderColor: "hsl(var(--primary))" },
-          "50%": { borderColor: "transparent" },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "cursor-blink": "typewriter-blink 1s step-end infinite",
       },
     },
   },

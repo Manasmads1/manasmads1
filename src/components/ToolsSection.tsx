@@ -1,25 +1,31 @@
-import SectionWrapper from "./SectionWrapper";
+import { motion } from "framer-motion";
 
-const tools = ["CapCut", "Alight Motion", "Canva", "Figma", "DaVinci Resolve", "Python", "HTML", "AI Tools"];
+const tools = ["CAPCUT", "ALIGHT MOTION", "CANVA", "FIGMA", "DAVINCI RESOLVE", "PYTHON", "HTML", "AI TOOLS"];
 
-const ToolsSection = () => (
-  <SectionWrapper id="tools">
-    <h2 className="text-3xl md:text-4xl font-heading font-bold mb-2">
-      Tools I <span className="text-gradient">Use</span>
-    </h2>
-    <div className="w-16 h-0.5 bg-primary mb-10" />
+const ToolsSection = () => {
+  const marqueeContent = tools.map((t) => `${t} ·`).join(" ") + " ";
+  const doubled = marqueeContent + marqueeContent;
 
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-      {tools.map((tool) => (
-        <div
-          key={tool}
-          className="bg-card border border-border rounded-lg flex items-center justify-center py-5 px-4 text-sm font-medium hover:border-primary/40 transition-colors"
-        >
-          {tool}
+  return (
+    <section className="py-16 md:py-24 overflow-hidden border-y border-border">
+      <motion.span
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="section-label px-5 md:px-8 lg:px-16"
+      >
+        05 / Tools
+      </motion.span>
+
+      <div className="relative mt-6">
+        <div className="animate-marquee whitespace-nowrap">
+          <span className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold text-foreground/10 tracking-wide">
+            {doubled}
+          </span>
         </div>
-      ))}
-    </div>
-  </SectionWrapper>
-);
+      </div>
+    </section>
+  );
+};
 
 export default ToolsSection;
