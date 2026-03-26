@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Instagram, Mail, ArrowDown } from "lucide-react";
+import avatar from "@/assets/avatar.png";
 
 const roles = [
   "I build things that get noticed.",

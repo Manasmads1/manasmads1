@@ -22,7 +22,7 @@ const Footer = () => (
           <Mail size={16} />
         </a>
       </div>
-      <p className="text-[10px] text-muted-foreground">© 2025 Manas Mads. All rights reserved.</p>
+      <p className="text-[10px] text-muted-foreground">© 2025 Manas. All rights reserved.</p>
       <p className="text-[11px] italic text-primary">Built with intention.</p>
     </div>
   </footer>
