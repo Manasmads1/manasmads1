@@ -6,6 +6,7 @@ import AboutSection from "@/components/AboutSection";
 import SkillsSection from "@/components/SkillsSection";
 import ToolsSection from "@/components/ToolsSection";
 import ExperienceSection from "@/components/ExperienceSection";
+import AchievementsSection from "@/components/AchievementsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
