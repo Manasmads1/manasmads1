@@ -86,7 +86,7 @@ const HeroSection = () => {
       {/* 3D workspace layer */}
       <motion.div
         style={{ scale: sceneScale }}
-        className="pointer-events-none absolute inset-x-0 bottom-[8%] top-[16%] opacity-70 md:left-[38%] md:opacity-100 lg:left-[44%]"
+        className="pointer-events-none absolute inset-x-0 bottom-[4%] top-[10%] opacity-70 md:left-[34%] md:opacity-100 lg:left-[40%]"
       >
         {reduced || !mountScene ? (
           <StaticWorkspace />
