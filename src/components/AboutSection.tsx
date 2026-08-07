@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import SectionHeading from "@/components/SectionHeading";
+import { reveal, stagger, viewportOnce } from "@/lib/motion";
 
 const stats = [
   { value: "2022", label: "Started" },
@@ -7,59 +9,67 @@ const stats = [
   { value: "∞", label: "Ideas" },
 ];
 
+const languages = ["Hindi & English Fluent", "Content in Major World Languages"];
+
 const AboutSection = () => (
-  <section id="about" className="section-padding max-w-7xl mx-auto">
-    <motion.span
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      className="section-label"
-    >
-      03 / About
-    </motion.span>
+  <section id="about" className="section-padding shell">
+    <SectionHeading index="03" label="About" />
 
-    <div className="grid md:grid-cols-[1.2fr_1fr] gap-12 md:gap-20">
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
+    <div className="mt-12 grid gap-12 md:mt-16 md:grid-cols-[1.05fr_1fr] md:gap-20">
+      <motion.h2
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportOnce}
+        variants={reveal}
+        className="font-heading text-display font-semibold leading-[1.02]"
       >
-        <h2 className="font-heading font-bold text-4xl md:text-6xl lg:text-7xl leading-[1.1] mb-0">
-          Creative.<br />
-          Technical.<br />
-          <span className="text-gradient">Relentless.</span>
-        </h2>
-      </motion.div>
+        Creative.
+        <br />
+        Technical.
+        <br />
+        <span className="text-gradient">Relentless.</span>
+      </motion.h2>
 
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, delay: 0.15 }}
-        className="space-y-6"
+        variants={stagger(0.05, 0.1)}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportOnce}
+        className="space-y-8"
       >
-        <p className="text-muted-foreground text-[15px] leading-[1.8]">
-          I'm Manas — a 19-year-old Computer Science student and creative freelancer. I work across video, design, code, and content because great ideas don't fit in one box. I've been building in the digital space since 2022, with 10+ viral reels, real project experience, and a growing freelance practice. Currently exploring affiliate marketing while studying Non-Medical with CS.
-        </p>
+        <motion.p variants={reveal} className="text-[17px] leading-[1.8] text-muted-foreground">
+          I'm Manas — a 19-year-old Computer Science student and creative freelancer. I work across
+          video, design, code, and content because great ideas don't fit in one box. I've been
+          building in the digital space since 2022, with 10+ viral reels, real project experience,
+          and a growing freelance practice. Currently exploring affiliate marketing while studying
+          Non-Medical with CS.
+        </motion.p>
 
-        <div className="grid grid-cols-4 gap-4 pt-4">
+        <motion.dl variants={reveal} className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           {stats.map((s) => (
-            <div key={s.label} className="text-center">
-              <p className="font-heading font-bold text-2xl md:text-3xl text-foreground">{s.value}</p>
-              <p className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground mt-1">{s.label}</p>
+            <div
+              key={s.label}
+              className="rounded-2xl border border-border bg-card p-4 text-center shadow-soft transition-shadow duration-500 hover:shadow-soft-md"
+            >
+              <dt className="sr-only">{s.label}</dt>
+              <dd className="font-heading text-3xl font-semibold tracking-tight">{s.value}</dd>
+              <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                {s.label}
+              </p>
             </div>
           ))}
-        </div>
+        </motion.dl>
 
-        <div className="flex flex-wrap gap-3 pt-2">
-          <span className="text-[11px] tracking-[0.15em] uppercase border border-primary/40 text-primary rounded-full px-4 py-1.5">
-            Hindi & English Fluent
-          </span>
-          <span className="text-[11px] tracking-[0.15em] uppercase border border-primary/40 text-primary rounded-full px-4 py-1.5">
-            Content in Major World Languages
-          </span>
-        </div>
+        <motion.ul variants={reveal} className="flex flex-wrap gap-2.5">
+          {languages.map((l) => (
+            <li
+              key={l}
+              className="rounded-full border border-border bg-card/70 px-4 py-2 text-[12px] text-muted-foreground"
+            >
+              {l}
+            </li>
+          ))}
+        </motion.ul>
       </motion.div>
     </div>
   </section>

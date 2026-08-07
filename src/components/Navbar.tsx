@@ -1,90 +1,161 @@
-import { useState, useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { useActiveSection } from "@/hooks/useActiveSection";
+import { EASE } from "@/lib/motion";
 
 const navItems = [
-  { label: "Work", href: "#work" },
-  { label: "Skills", href: "#skills" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Work", id: "work" },
+  { label: "About", id: "about" },
+  { label: "Skills", id: "skills" },
+  { label: "Journey", id: "journey" },
+  { label: "Contact", id: "contact" },
 ];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const trackedIds = useMemo(
+    () => ["home", "work", "about", "skills", "tools", "journey", "achievements", "contact"],
+    [],
+  );
+  const active = useActiveSection(trackedIds);
+
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 26, mass: 0.4 });
+
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleClick = (href: string) => {
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
+  const go = (id: string) => {
     setMobileOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-[hsl(0_0%_5%/0.95)] backdrop-blur-md border-b border-primary/20"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 py-4">
-        <button onClick={() => handleClick("#home")} className="flex items-center gap-2">
-          <img src={logo} alt="M.A.D.S Logo" className="h-9 w-9 rounded-full object-cover" />
-        </button>
+    <header className="fixed inset-x-0 top-0 z-50">
+      <motion.div
+        animate={{
+          backgroundColor: scrolled ? "hsl(210 17% 98% / 0.72)" : "hsl(210 17% 98% / 0)",
+          borderColor: scrolled ? "hsl(210 16% 93% / 1)" : "hsl(210 16% 93% / 0)",
+          backdropFilter: scrolled ? "blur(18px) saturate(160%)" : "blur(0px)",
+        }}
+        transition={{ duration: 0.5, ease: EASE }}
+        className="border-b"
+      >
+        <nav
+          aria-label="Primary"
+          className="shell flex items-center justify-between px-5 py-3.5 md:px-10 lg:px-16"
+        >
+          <button
+            onClick={() => go("home")}
+            aria-label="Back to top"
+            className="flex items-center gap-2.5 rounded-full"
+          >
+            <img
+              src={logo}
+              alt=""
+              width={36}
+              height={36}
+              className="h-9 w-9 rounded-full object-cover shadow-soft"
+            />
+            <span className="font-heading text-sm font-semibold tracking-tight">Manas</span>
+          </button>
 
-        {/* Desktop */}
-        <div className="hidden md:flex items-center gap-10">
-          <ul className="flex items-center gap-8">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <button
-                  onClick={() => handleClick(item.href)}
-                  className="text-[13px] font-body font-medium tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
-                >
-                  {item.label}
-                </button>
-              </li>
-            ))}
+          <ul className="hidden items-center gap-1 md:flex">
+            {navItems.map((item) => {
+              const isActive = active === item.id;
+              return (
+                <li key={item.id}>
+                  <button
+                    onClick={() => go(item.id)}
+                    aria-current={isActive ? "true" : undefined}
+                    className="relative rounded-full px-4 py-2 text-[13px] font-medium text-muted-foreground transition-colors duration-300 hover:text-foreground"
+                  >
+                    {isActive && (
+                      <motion.span
+                        layoutId="nav-pill"
+                        transition={{ type: "spring", stiffness: 320, damping: 30 }}
+                        className="absolute inset-0 rounded-full bg-muted"
+                      />
+                    )}
+                    <span className={isActive ? "relative text-foreground" : "relative"}>
+                      {item.label}
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
           </ul>
-          <div className="flex items-center gap-2 text-[11px] font-body tracking-[0.15em] uppercase text-muted-foreground">
-            <span className="w-2 h-2 rounded-full bg-primary animate-dot-pulse" />
-            Available for Work
+
+          <div className="hidden items-center gap-2 md:flex">
+            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3 py-1.5 text-[11px] text-muted-foreground">
+              <span className="h-1.5 w-1.5 animate-dot-pulse rounded-full bg-[hsl(140_55%_42%)]" />
+              Available
+            </span>
           </div>
-        </div>
 
-        {/* Mobile toggle */}
-        <button className="md:hidden text-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </div>
+          <button
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full text-foreground md:hidden"
+            onClick={() => setMobileOpen((o) => !o)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+          >
+            {mobileOpen ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
+          </button>
+        </nav>
 
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden bg-background/98 backdrop-blur-md border-b border-border">
-          <ul className="flex flex-col items-center gap-5 py-8">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <button
-                  onClick={() => handleClick(item.href)}
-                  className="text-sm tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors"
+        {/* scroll progress */}
+        <motion.div
+          style={{ scaleX: progress }}
+          className="h-[2px] origin-left bg-accent"
+          aria-hidden="true"
+        />
+      </motion.div>
+
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.35, ease: EASE }}
+            className="glass mx-4 mt-3 rounded-3xl p-3 md:hidden"
+          >
+            <ul className="flex flex-col">
+              {navItems.map((item, i) => (
+                <motion.li
+                  key={item.id}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.05 + i * 0.05, ease: EASE }}
                 >
-                  {item.label}
-                </button>
-              </li>
-            ))}
-            <li className="flex items-center gap-2 text-[11px] tracking-[0.15em] uppercase text-primary">
-              <span className="w-2 h-2 rounded-full bg-primary animate-dot-pulse" />
-              Available for Work
-            </li>
-          </ul>
-        </div>
-      )}
-    </nav>
+                  <button
+                    onClick={() => go(item.id)}
+                    className="w-full rounded-2xl px-4 py-3.5 text-left text-[15px] font-medium text-foreground transition-colors hover:bg-muted"
+                  >
+                    {item.label}
+                  </button>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 };
 

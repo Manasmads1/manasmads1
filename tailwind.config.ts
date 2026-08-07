@@ -14,12 +14,13 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        body: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        heading: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+        body: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       fontSize: {
-        'hero': 'clamp(5rem, 15vw, 12rem)',
-        'hero-mobile': 'clamp(3rem, 12vw, 5rem)',
+        'display': ['clamp(2.75rem, 7vw, 6rem)', { lineHeight: '0.95', letterSpacing: '-0.03em' }],
+        'headline': ['clamp(2rem, 4.4vw, 3.5rem)', { lineHeight: '1.05', letterSpacing: '-0.025em' }],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -27,11 +28,13 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        surface: {
+          DEFAULT: "hsl(var(--surface))",
+          foreground: "hsl(var(--surface-foreground))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
-          glow: "hsl(var(--primary-glow))",
-          deep: "hsl(var(--primary-deep))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -48,6 +51,7 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          soft: "hsl(var(--accent-soft))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -72,6 +76,9 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        xl: "calc(var(--radius) + 4px)",
+        '2xl': "calc(var(--radius) + 10px)",
+        '3xl': "calc(var(--radius) + 20px)",
       },
       keyframes: {
         "accordion-down": {
