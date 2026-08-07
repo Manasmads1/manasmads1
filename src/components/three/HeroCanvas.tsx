@@ -38,7 +38,7 @@ const HeroCanvas = () => {
         dpr={[1, 1.6]}
         frameloop={visible ? "always" : "never"}
         gl={{ antialias: true, powerPreference: "high-performance", alpha: true }}
-        camera={{ position: [0.1, 1.35, 5], fov: 38 }}
+        camera={{ position: [0.15, 1.5, 7.4], fov: 34 }}
       >
         <Suspense fallback={null}>
           <WorkspaceScene />
