@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import SectionHeading from "@/components/SectionHeading";
+import { reveal, stagger, viewportOnce } from "@/lib/motion";
 
 const skills = [
   { name: "Video Editing (CapCut / DaVinci)", level: "INTERMEDIATE" },
@@ -15,36 +17,54 @@ const skills = [
   { name: "Social Media Creation", level: "CREATOR BY PASSION" },
 ];
 
-const SkillsSection = () => (
-  <section id="skills" className="section-padding max-w-7xl mx-auto">
-    <motion.span
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      className="section-label"
-    >
-      04 / Skills
-    </motion.span>
+const levelStyles: Record<string, string> = {
+  BEGINNER: "bg-muted text-muted-foreground",
+  INTERMEDIATE: "bg-accent-soft text-accent",
+  PROFICIENT: "bg-primary text-primary-foreground",
+  ACTIVE: "bg-[hsl(140_60%_45%/0.14)] text-[hsl(140_55%_28%)]",
+  "CREATOR BY PASSION": "bg-[hsl(24_85%_50%/0.14)] text-[hsl(24_75%_38%)]",
+};
 
-    <div className="space-y-0">
-      {skills.map((s, i) => (
-        <motion.div
+const SkillsSection = () => (
+  <section id="skills" className="section-padding shell">
+    <SectionHeading
+      index="04"
+      label="Skills"
+      title={
+        <>
+          A toolkit that spans <span className="text-gradient">frame and function</span>.
+        </>
+      }
+    />
+
+    <motion.ul
+      variants={stagger(0.05, 0.05)}
+      initial="hidden"
+      whileInView="show"
+      viewport={viewportOnce}
+      className="mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
+    >
+      {skills.map((s) => (
+        <motion.li
           key={s.name}
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: i * 0.04 }}
-          className="group flex items-center justify-between py-4 md:py-5 border-b border-border hover:bg-card/40 hover:px-4 transition-all duration-300"
+          variants={reveal}
+          whileHover={{ y: -4 }}
+          transition={{ type: "spring", stiffness: 280, damping: 24 }}
+          className="group flex h-full flex-col justify-between gap-4 rounded-2xl border border-border bg-card p-5 shadow-soft transition-shadow duration-500 hover:shadow-soft-md"
         >
-          <span className="font-heading text-lg md:text-2xl font-medium group-hover:text-primary transition-colors duration-300">
+          <span className="font-heading text-[17px] font-medium leading-snug tracking-tight">
             {s.name}
           </span>
-          <span className="text-[10px] md:text-[11px] tracking-[0.2em] uppercase border border-border text-muted-foreground rounded-full px-3 py-1 flex-shrink-0 ml-4">
+          <span
+            className={`w-fit rounded-full px-3 py-1 font-mono text-[9.5px] uppercase tracking-[0.16em] ${
+              levelStyles[s.level] ?? "bg-muted text-muted-foreground"
+            }`}
+          >
             {s.level}
           </span>
-        </motion.div>
+        </motion.li>
       ))}
-    </div>
+    </motion.ul>
   </section>
 );
 

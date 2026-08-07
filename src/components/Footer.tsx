@@ -1,29 +1,50 @@
 import { Mail, MessageCircle, Instagram } from "lucide-react";
 import logo from "@/assets/logo.png";
 
+const socials = [
+  { href: "https://instagram.com/manasmads1", Icon: Instagram, label: "Instagram", external: true },
+  { href: "https://wa.me/918510946344", Icon: MessageCircle, label: "WhatsApp", external: true },
+  { href: "mailto:manas.kumar.3100@gmail.com", Icon: Mail, label: "Email", external: false },
+];
+
 const Footer = () => (
-  <footer className="border-t border-border py-16 px-5">
-    <div className="max-w-7xl mx-auto flex flex-col items-center text-center gap-6">
-      <img src={logo} alt="M.A.D.S Logo" className="h-10 w-10 rounded-full object-cover" />
-      <p className="text-[13px] tracking-[0.4em] uppercase font-body text-foreground">
-        Manas
-      </p>
-      <p className="text-[11px] tracking-[0.2em] uppercase text-muted-foreground">
-        Creative Technologist · Freelancer · India
-      </p>
-      <div className="flex items-center gap-5">
-        <a href="https://instagram.com/manasmads1" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-          <Instagram size={16} />
-        </a>
-        <a href="https://wa.me/918510946344" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-          <MessageCircle size={16} />
-        </a>
-        <a href="mailto:manas.kumar.3100@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
-          <Mail size={16} />
-        </a>
+  <footer className="border-t border-border bg-card/50">
+    <div className="shell flex flex-col gap-8 px-5 py-14 md:flex-row md:items-center md:justify-between md:px-10 lg:px-16">
+      <div className="flex items-center gap-3">
+        <img
+          src={logo}
+          alt=""
+          width={40}
+          height={40}
+          className="h-10 w-10 rounded-full object-cover shadow-soft"
+        />
+        <div>
+          <p className="font-heading text-sm font-semibold tracking-tight">Manas</p>
+          <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+            Creative Technologist · Freelancer · India
+          </p>
+        </div>
       </div>
-      <p className="text-[10px] text-muted-foreground">© 2025 Manas. All rights reserved.</p>
-      <p className="text-[11px] italic text-primary">Built with intention.</p>
+
+      <div className="flex items-center gap-1">
+        {socials.map(({ href, Icon, label, external }) => (
+          <a
+            key={label}
+            href={href}
+            aria-label={label}
+            target={external ? "_blank" : undefined}
+            rel={external ? "noopener noreferrer" : undefined}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full text-muted-foreground transition-colors duration-300 hover:bg-muted hover:text-foreground"
+          >
+            <Icon size={17} aria-hidden="true" />
+          </a>
+        ))}
+      </div>
+
+      <div className="text-[12px] text-muted-foreground md:text-right">
+        <p>© 2026 Manas. All rights reserved.</p>
+        <p className="mt-1 font-mono text-[11px] text-accent">Built with intention.</p>
+      </div>
     </div>
   </footer>
 );

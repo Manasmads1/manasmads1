@@ -1,37 +1,70 @@
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
+/**
+ * Two-layer cursor: a crisp dot plus a lagging ring driven by rAF,
+ * so it never re-renders React on pointer move.
+ */
 const CustomCursor = () => {
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-  const [visible, setVisible] = useState(false);
+  const dot = useRef<HTMLDivElement>(null);
+  const ring = useRef<HTMLDivElement>(null);
+  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    const isTouchDevice = window.matchMedia("(hover: none)").matches;
-    if (isTouchDevice) return;
+    if (
+      window.matchMedia("(hover: none)").matches ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    )
+      return;
+
+    setEnabled(true);
+
+    const target = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    const eased = { ...target };
+    let raf = 0;
 
     const move = (e: MouseEvent) => {
-      setPos({ x: e.clientX, y: e.clientY });
-      setVisible(true);
+      target.x = e.clientX;
+      target.y = e.clientY;
+      if (dot.current) {
+        dot.current.style.transform = `translate3d(${e.clientX - 3}px, ${e.clientY - 3}px, 0)`;
+        dot.current.style.opacity = "1";
+      }
+      const interactive = (e.target as HTMLElement)?.closest(
+        "a, button, input, textarea, [role='button']",
+      );
+      if (ring.current) ring.current.style.scale = interactive ? "1.7" : "1";
     };
-    const leave = () => setVisible(false);
 
-    window.addEventListener("mousemove", move);
-    document.addEventListener("mouseleave", leave);
-    document.addEventListener("mouseenter", () => setVisible(true));
+    const loop = () => {
+      eased.x += (target.x - eased.x) * 0.16;
+      eased.y += (target.y - eased.y) * 0.16;
+      if (ring.current) {
+        ring.current.style.transform = `translate3d(${eased.x - 17}px, ${eased.y - 17}px, 0)`;
+        ring.current.style.opacity = "1";
+      }
+      raf = requestAnimationFrame(loop);
+    };
 
+    window.addEventListener("mousemove", move, { passive: true });
+    raf = requestAnimationFrame(loop);
     return () => {
       window.removeEventListener("mousemove", move);
-      document.removeEventListener("mouseleave", leave);
+      cancelAnimationFrame(raf);
     };
   }, []);
 
-  if (!visible) return null;
+  if (!enabled) return null;
 
   return (
-    <div
-      className="fixed top-0 left-0 z-[10000] pointer-events-none hidden md:block"
-      style={{ transform: `translate(${pos.x - 6}px, ${pos.y - 6}px)` }}
-    >
-      <div className="w-3 h-3 rounded-full bg-primary mix-blend-difference" />
+    <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-[9999] hidden md:block">
+      <div
+        ref={ring}
+        className="absolute left-0 top-0 h-[34px] w-[34px] rounded-full border border-foreground/25 opacity-0 transition-[scale] duration-300 ease-out"
+      />
+      <div
+        ref={dot}
+        className="absolute left-0 top-0 h-1.5 w-1.5 rounded-full bg-accent opacity-0"
+      />
     </div>
   );
 };

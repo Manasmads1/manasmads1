@@ -1,108 +1,157 @@
-import { motion } from "framer-motion";
-import { Mail, MessageCircle, Instagram } from "lucide-react";
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { Mail, MessageCircle, Instagram, ArrowRight } from "lucide-react";
+import SectionHeading from "@/components/SectionHeading";
+import MagneticButton from "@/components/ui/MagneticButton";
+import { reveal, stagger, viewportOnce } from "@/lib/motion";
+
+const channels = [
+  {
+    label: "Email",
+    value: "manas.kumar.3100@gmail.com",
+    href: "mailto:manas.kumar.3100@gmail.com",
+    Icon: Mail,
+    external: false,
+  },
+  {
+    label: "WhatsApp",
+    value: "+91 85109 46344",
+    href: "https://wa.me/918510946344",
+    Icon: MessageCircle,
+    external: true,
+  },
+  {
+    label: "Instagram",
+    value: "@manasmads1",
+    href: "https://instagram.com/manasmads1",
+    Icon: Instagram,
+    external: true,
+  },
+];
+
+const inputClass =
+  "w-full rounded-xl border border-border bg-background/70 px-4 py-3 text-[15px] text-foreground placeholder:text-muted-foreground transition-all duration-300 focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/12";
 
 const ContactSection = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
+  const mailtoHref = `mailto:manas.kumar.3100@gmail.com?subject=${encodeURIComponent(
+    `Project enquiry from ${form.name || "your site"}`,
+  )}&body=${encodeURIComponent(`${form.message}\n\n— ${form.name} (${form.email})`)}`;
+
   return (
-    <section id="contact" className="section-padding max-w-7xl mx-auto">
-      <motion.span
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="section-label"
+    <section id="contact" className="section-padding shell">
+      <SectionHeading
+        index="08"
+        label="Let's Talk"
+        align="center"
+        title={
+          <>
+            Got a project in mind? <span className="text-gradient">Reach out.</span>
+          </>
+        }
+        className="mx-auto items-center text-center"
+      />
+
+      <motion.div
+        variants={stagger(0.05, 0.1)}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportOnce}
+        className="mt-14 grid gap-6 lg:grid-cols-[1fr_1.05fr] lg:items-start"
       >
-        07 / Let's Talk
-      </motion.span>
+        <motion.ul variants={reveal} className="grid gap-3">
+          {channels.map(({ label, value, href, Icon, external }) => (
+            <li key={label}>
+              <a
+                href={href}
+                target={external ? "_blank" : undefined}
+                rel={external ? "noopener noreferrer" : undefined}
+                className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-5 shadow-soft transition-all duration-500 hover:-translate-y-0.5 hover:shadow-soft-md"
+              >
+                <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-muted text-foreground transition-colors duration-500 group-hover:bg-primary group-hover:text-primary-foreground">
+                  <Icon size={17} aria-hidden="true" />
+                </span>
+                <span className="min-w-0">
+                  <span className="block font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                    {label}
+                  </span>
+                  <span className="block truncate text-[15px] font-medium">{value}</span>
+                </span>
+                <ArrowRight
+                  size={16}
+                  aria-hidden="true"
+                  className="ml-auto shrink-0 text-muted-foreground transition-transform duration-500 group-hover:translate-x-1"
+                />
+              </a>
+            </li>
+          ))}
+        </motion.ul>
 
-      <div className="text-center mb-16">
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-muted-foreground text-lg md:text-xl mb-4"
+        <motion.form
+          variants={reveal}
+          onSubmit={(e) => {
+            e.preventDefault();
+            window.location.href = mailtoHref;
+          }}
+          className="glass space-y-4 rounded-3xl p-6 md:p-8"
         >
-          Got a project in mind?
-        </motion.p>
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="font-heading font-bold text-5xl md:text-8xl lg:text-9xl tracking-tight"
-          style={{ WebkitTextStroke: '1px hsl(4 70% 46%)', color: 'transparent' }}
-        >
-          REACH OUT.
-        </motion.h2>
-      </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="space-y-1.5">
+              <label htmlFor="contact-name" className="text-[13px] font-medium">
+                Name
+              </label>
+              <input
+                id="contact-name"
+                type="text"
+                autoComplete="name"
+                placeholder="Your name"
+                value={form.name}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                className={inputClass}
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label htmlFor="contact-email" className="text-[13px] font-medium">
+                Email
+              </label>
+              <input
+                id="contact-email"
+                type="email"
+                autoComplete="email"
+                placeholder="you@example.com"
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                className={inputClass}
+              />
+            </div>
+          </div>
 
-      <div className="grid md:grid-cols-3 gap-6 mb-16">
-        <a
-          href="mailto:manas.kumar.3100@gmail.com"
-          className="group bg-card border border-border rounded-sm p-6 hover:border-primary/40 transition-all duration-300 text-center"
-        >
-          <Mail size={20} className="text-primary mx-auto mb-3" />
-          <p className="text-[10px] tracking-[0.3em] uppercase text-primary mb-2">Email</p>
-          <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">manas.kumar.3100@gmail.com</p>
-        </a>
-        <a
-          href="https://wa.me/918510946344"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group bg-card border border-border rounded-sm p-6 hover:border-primary/40 transition-all duration-300 text-center"
-        >
-          <MessageCircle size={20} className="text-primary mx-auto mb-3" />
-          <p className="text-[10px] tracking-[0.3em] uppercase text-primary mb-2">WhatsApp</p>
-          <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">+91 85109 46344</p>
-        </a>
-        <a
-          href="https://instagram.com/manasmads1"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group bg-card border border-border rounded-sm p-6 hover:border-primary/40 transition-all duration-300 text-center"
-        >
-          <Instagram size={20} className="text-primary mx-auto mb-3" />
-          <p className="text-[10px] tracking-[0.3em] uppercase text-primary mb-2">Instagram</p>
-          <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">@manasmads1</p>
-        </a>
-      </div>
+          <div className="space-y-1.5">
+            <label htmlFor="contact-message" className="text-[13px] font-medium">
+              Message
+            </label>
+            <textarea
+              id="contact-message"
+              rows={5}
+              placeholder="Tell me about the project…"
+              value={form.message}
+              onChange={(e) => setForm({ ...form, message: e.target.value })}
+              className={`${inputClass} resize-none`}
+            />
+          </div>
 
-      <motion.form
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        onSubmit={(e) => e.preventDefault()}
-        className="max-w-xl mx-auto space-y-4"
-      >
-        <input
-          type="text"
-          placeholder="Name"
-          value={form.name}
-          onChange={(e) => setForm({ ...form, name: e.target.value })}
-          className="w-full bg-transparent border-b border-border px-0 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={(e) => setForm({ ...form, email: e.target.value })}
-          className="w-full bg-transparent border-b border-border px-0 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
-        />
-        <textarea
-          rows={3}
-          placeholder="Message"
-          value={form.message}
-          onChange={(e) => setForm({ ...form, message: e.target.value })}
-          className="w-full bg-transparent border-b border-border px-0 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors resize-none"
-        />
-        <button
-          type="submit"
-          className="flex items-center gap-2 text-[12px] tracking-[0.2em] uppercase font-medium text-primary hover:text-foreground transition-colors pt-2"
-        >
-          Send →
-        </button>
-      </motion.form>
+          <div className="flex flex-wrap items-center gap-3 pt-1">
+            <MagneticButton>
+              Send message
+              <ArrowRight size={15} aria-hidden="true" />
+            </MagneticButton>
+            <p className="text-[12.5px] text-muted-foreground">
+              Opens your mail app — usually a reply within a day.
+            </p>
+          </div>
+        </motion.form>
+      </motion.div>
     </section>
   );
 };

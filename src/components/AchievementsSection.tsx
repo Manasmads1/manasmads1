@@ -1,5 +1,9 @@
 import { motion } from "framer-motion";
+import { BadgeCheck } from "lucide-react";
 import certGenAI from "@/assets/cert-genai.jpg";
+import SectionHeading from "@/components/SectionHeading";
+import TiltCard from "@/components/ui/TiltCard";
+import { reveal, stagger, viewportOnce } from "@/lib/motion";
 
 const certificates = [
   {
@@ -10,52 +14,48 @@ const certificates = [
 ];
 
 const AchievementsSection = () => (
-  <section id="achievements" className="section-padding max-w-7xl mx-auto">
-    <motion.span
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      className="section-label"
-    >
-      07 / Achievements
-    </motion.span>
+  <section id="achievements" className="section-padding shell">
+    <SectionHeading
+      index="07"
+      label="Achievements"
+      title={
+        <>
+          Certifications &amp; <span className="text-gradient">recognition</span>
+        </>
+      }
+    />
 
-    <motion.h2
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="font-heading font-bold text-4xl md:text-6xl leading-[1.1] mb-12"
+    <motion.div
+      variants={stagger(0.05, 0.1)}
+      initial="hidden"
+      whileInView="show"
+      viewport={viewportOnce}
+      className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
     >
-      Certifications &amp;&nbsp;
-      <span className="text-gradient">Recognition</span>
-    </motion.h2>
-
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      {certificates.map((cert, i) => (
-        <motion.div
-          key={cert.title}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: i * 0.1 }}
-          className="group rounded-xl border border-[hsl(var(--border))] bg-[hsl(var(--surface))] overflow-hidden hover:border-primary/50 transition-colors duration-300"
-        >
-          <div className="overflow-hidden">
-            <img
-              src={cert.image}
-              alt={cert.title}
-              className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-          <div className="p-5">
-            <h3 className="font-heading font-semibold text-lg text-foreground mb-1">
-              {cert.title}
-            </h3>
-            <p className="text-muted-foreground text-sm">{cert.issuer}</p>
-          </div>
-        </motion.div>
+      {certificates.map((cert) => (
+        <motion.article key={cert.title} variants={reveal}>
+          <TiltCard intensity={5}>
+            <div className="group overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-shadow duration-500 hover:shadow-soft-lg">
+              <div className="overflow-hidden border-b border-border bg-muted/60 p-4">
+                <img
+                  src={cert.image}
+                  alt={`${cert.title} certificate issued by ${cert.issuer}`}
+                  loading="lazy"
+                  className="aspect-[4/3] w-full rounded-xl object-cover shadow-soft transition-transform duration-700 group-hover:scale-[1.04]"
+                />
+              </div>
+              <div className="flex items-start gap-3 p-6">
+                <BadgeCheck size={18} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
+                <div>
+                  <h3 className="font-heading text-lg font-semibold tracking-tight">{cert.title}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{cert.issuer}</p>
+                </div>
+              </div>
+            </div>
+          </TiltCard>
+        </motion.article>
       ))}
-    </div>
+    </motion.div>
   </section>
 );
 
