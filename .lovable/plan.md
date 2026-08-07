@@ -54,6 +54,14 @@ One shared spring/easing vocabulary (Apple/Linear register) used everywhere: sta
 - 3D scene lazy-loaded via `React.lazy` + Suspense, `dpr` capped, frameloop paused off-screen, instanced geometry, no post-processing stack beyond a cheap bloom; lighter fallback scene on mobile and a static composition under `prefers-reduced-motion`.
 - Scroll orchestration via framer-motion `useScroll`/`useTransform` (transform/opacity only, no layout thrash) to hold 60 FPS and zero CLS.
 - Targets: Lighthouse Performance 90+, Accessibility / Best Practices / SEO 100.
+
+## Craft constraint
+
+Nothing may read as a stock Tailwind layout or portfolio template. No repeating uniform card grid, no predictable centred-hero-then-three-columns rhythm. Each section gets its own composition: asymmetric splits, off-grid overlaps, varied column ratios, deliberate negative space, layered depth and typography that changes scale and weight between sections. Bar for polish: Awwwards / Framer Showcase, while staying fast, accessible and genuinely usable. Restraint over effect-stacking — every animation and detail earns its place.
+
+## Developer-themed details (tasteful, sparing)
+
+Woven in where they reinforce identity, never as decoration for its own sake: a live-typing terminal in the hero, syntax-highlighted code snippets as section accents, a GitHub-style contribution grid, deployment status chips ("deployed · main"), an API-request visual in Contact, and a light network/node diagram behind Tools or Journey. Each appears once, at low contrast, in the platinum/gunmetal palette.
 - Rewrite tokens in `index.css` + `tailwind.config.ts` (HSL semantic tokens only, no hardcoded colours in components).
 - Shared primitives: `SectionHeading`, card and button variants, motion presets — no duplicated animation code.
 - Accessibility: single `<main>`, semantic landmarks, aria-labels on icon buttons, visible focus rings, AA contrast, full reduced-motion path, canvas `aria-hidden` with text equivalents.
