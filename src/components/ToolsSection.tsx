@@ -9,6 +9,10 @@ const tools = [
   "DAVINCI RESOLVE",
   "PYTHON",
   "HTML",
+  "CSS",
+  "JAVASCRIPT",
+  "REACT",
+  "BOOTSTRAP",
   "AI TOOLS",
 ];
 

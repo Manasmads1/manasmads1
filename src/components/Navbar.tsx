@@ -6,10 +6,10 @@ import { useActiveSection } from "@/hooks/useActiveSection";
 import { EASE } from "@/lib/motion";
 
 const navItems = [
-  { label: "Work", id: "work" },
   { label: "About", id: "about" },
+  { label: "Achievements", id: "achievements" },
   { label: "Skills", id: "skills" },
-  { label: "Journey", id: "journey" },
+  { label: "Work", id: "work" },
   { label: "Contact", id: "contact" },
 ];
 
@@ -18,7 +18,7 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const trackedIds = useMemo(
-    () => ["home", "work", "about", "skills", "tools", "journey", "achievements", "contact"],
+    () => ["home", "about", "achievements", "skills", "tools", "work", "journey", "contact"],
     [],
   );
   const active = useActiveSection(trackedIds);

@@ -1,16 +1,12 @@
-import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Instagram, Mail, ArrowDown, MessageCircle } from "lucide-react";
-import avatar from "@/assets/avatar.png";
 import MagneticButton from "@/components/ui/MagneticButton";
 import TerminalCard from "@/components/hero/TerminalCard";
 import ContributionGrid from "@/components/hero/ContributionGrid";
 import CodeSnippetCard from "@/components/hero/CodeSnippetCard";
-import StaticWorkspace from "@/components/three/StaticWorkspace";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { EASE, reveal, stagger } from "@/lib/motion";
-
-const HeroCanvas = lazy(() => import("@/components/three/HeroCanvas"));
 
 const roles = [
   "I build things that get noticed.",
@@ -18,13 +14,12 @@ const roles = [
   "Turning ideas into impact since 2022.",
 ];
 
-const badges = ["React", "Python", "Canva", "DaVinci", "AI Tools"];
+const badges = ["React", "JavaScript", "Python", "Canva", "DaVinci"];
 
 const HeroSection = () => {
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayed, setDisplayed] = useState("");
   const [deleting, setDeleting] = useState(false);
-  const [mountScene, setMountScene] = useState(false);
   const reduced = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -34,23 +29,6 @@ const HeroSection = () => {
   });
   const contentY = useTransform(scrollYProgress, [0, 1], [0, 90]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
-  const sceneScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
-
-  /* defer the WebGL bundle until the browser is idle */
-  useEffect(() => {
-    if (reduced) return;
-    const ric = (window as unknown as {
-      requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number;
-      cancelIdleCallback?: (id: number) => void;
-    });
-    const id = ric.requestIdleCallback
-      ? ric.requestIdleCallback(() => setMountScene(true), { timeout: 1800 })
-      : window.setTimeout(() => setMountScene(true), 600);
-    return () => {
-      if (ric.cancelIdleCallback) ric.cancelIdleCallback(id);
-      else window.clearTimeout(id);
-    };
-  }, [reduced]);
 
   useEffect(() => {
     if (reduced) {
@@ -83,23 +61,9 @@ const HeroSection = () => {
       ref={sectionRef}
       className="relative min-h-dvh overflow-hidden px-5 pb-28 pt-28 md:px-10 md:pb-32 md:pt-32 lg:px-16"
     >
-      {/* 3D workspace layer */}
-      <motion.div
-        style={{ scale: sceneScale }}
-        className="pointer-events-none absolute inset-x-0 bottom-[4%] top-[10%] opacity-70 md:left-[34%] md:opacity-100 lg:left-[40%]"
-      >
-        {reduced || !mountScene ? (
-          <StaticWorkspace />
-        ) : (
-          <Suspense fallback={<StaticWorkspace />}>
-            <HeroCanvas />
-          </Suspense>
-        )}
-      </motion.div>
-
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
-        className="shell relative z-10 flex min-h-[calc(100dvh-14rem)] flex-col justify-center"
+        className="shell relative z-10 grid min-h-[calc(100dvh-14rem)] items-center gap-16 lg:grid-cols-[minmax(0,1fr)_22rem]"
       >
         <motion.div
           variants={stagger(0.1, 0.11)}
@@ -112,13 +76,6 @@ const HeroSection = () => {
               <span className="h-1.5 w-1.5 animate-dot-pulse rounded-full bg-[hsl(140_55%_42%)]" />
               Available for work
             </span>
-            <img
-              src={avatar}
-              alt="Portrait of Manas"
-              width={36}
-              height={36}
-              className="h-9 w-9 rounded-full border border-border object-cover shadow-soft"
-            />
           </motion.div>
 
           <motion.h1
@@ -190,52 +147,44 @@ const HeroSection = () => {
             ))}
           </motion.ul>
         </motion.div>
-      </motion.div>
 
-      {/* Floating workspace UI layer */}
-      <div className="pointer-events-none absolute inset-0 z-20 hidden lg:block">
-        <motion.div
-          initial={{ opacity: 0, y: 26, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ delay: 0.7, duration: 1, ease: EASE }}
-          className="absolute right-[4%] top-[18%]"
-        >
+        {/* calm editorial column of existing developer cards */}
+        <div className="hidden justify-self-end lg:flex lg:flex-col lg:items-end lg:gap-6">
           <motion.div
-            animate={{ y: [0, -9, 0] }}
-            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+            initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ delay: 0.55, duration: 0.9, ease: EASE }}
           >
-            <TerminalCard />
+            <motion.div
+              animate={reduced ? undefined : { y: [0, -7, 0] }}
+              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <TerminalCard />
+            </motion.div>
           </motion.div>
-        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 26, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ delay: 0.9, duration: 1, ease: EASE }}
-          className="absolute bottom-[16%] right-[13%]"
-        >
           <motion.div
-            animate={{ y: [0, 11, 0] }}
-            transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <ContributionGrid />
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 26, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ delay: 1.05, duration: 1, ease: EASE }}
-          className="absolute left-[43%] top-[13%] xl:left-[47%]"
-        >
-          <motion.div
-            animate={{ y: [0, -7, 0] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ delay: 0.7, duration: 0.9, ease: EASE }}
           >
             <CodeSnippetCard />
           </motion.div>
-        </motion.div>
-      </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ delay: 0.85, duration: 0.9, ease: EASE }}
+          >
+            <motion.div
+              animate={reduced ? undefined : { y: [0, 8, 0] }}
+              transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <ContributionGrid />
+            </motion.div>
+          </motion.div>
+        </div>
+      </motion.div>
 
       <motion.button
         initial={{ opacity: 0 }}
