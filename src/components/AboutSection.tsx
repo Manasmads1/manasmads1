@@ -2,20 +2,19 @@ import { motion } from "framer-motion";
 import SectionHeading from "@/components/SectionHeading";
 import { reveal, stagger, viewportOnce } from "@/lib/motion";
 
-const stats = [
-  { value: "2022", label: "Started" },
-  { value: "10+", label: "Viral Reels" },
-  { value: "3K+", label: "Followers" },
-  { value: "∞", label: "Ideas" },
+const facts = [
+  { value: "Class 12", label: "CBSE Non-Medical" },
+  { value: "Computer Science", label: "Core subject" },
+  { value: "Since 2022", label: "Building online" },
 ];
 
 const languages = ["Hindi & English Fluent", "Content in Major World Languages"];
 
 const AboutSection = () => (
   <section id="about" className="section-padding shell">
-    <SectionHeading index="03" label="About" />
+    <SectionHeading index="02" label="About" />
 
-    <div className="mt-12 grid gap-12 md:mt-16 md:grid-cols-[1.05fr_1fr] md:gap-20">
+    <div className="mt-12 grid gap-12 md:mt-16 md:grid-cols-[0.8fr_1.2fr] md:gap-20">
       <motion.h2
         initial="hidden"
         whileInView="show"
@@ -35,27 +34,33 @@ const AboutSection = () => (
         initial="hidden"
         whileInView="show"
         viewport={viewportOnce}
-        className="space-y-8"
+        className="space-y-10"
       >
-        <motion.p variants={reveal} className="text-[17px] leading-[1.8] text-muted-foreground">
-          I'm Manas — a 19-year-old Computer Science student and creative freelancer. I work across
-          video, design, code, and content because great ideas don't fit in one box. I've been
-          building in the digital space since 2022, with 10+ viral reels, real project experience,
-          and a growing freelance practice. Currently exploring affiliate marketing while studying
-          Non-Medical with CS.
+        <motion.p
+          variants={reveal}
+          className="max-w-[62ch] text-[19px] leading-[1.85] text-foreground/80 md:text-[21px] md:leading-[1.8]"
+        >
+          I’m Manas, a Class 12 CBSE Non-Medical student with Computer Science and an endless
+          curiosity to explore, learn, and build. Alongside technology, I’m exploring the freelance
+          world through content creation, affiliate marketing, and creative digital work. I’ve
+          participated in numerous inter-school, interstate, and national-level events, with several
+          wins along the way. Music is another part of who I am, and it has brought me several
+          awards and memorable experiences. I’m still learning, still experimenting, and always
+          looking for the next thing to create, improve, and grow with.
         </motion.p>
 
-        <motion.dl variants={reveal} className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {stats.map((s) => (
-            <div
-              key={s.label}
-              className="rounded-2xl border border-border bg-card p-4 text-center shadow-soft transition-shadow duration-500 hover:shadow-soft-md"
-            >
-              <dt className="sr-only">{s.label}</dt>
-              <dd className="font-heading text-3xl font-semibold tracking-tight">{s.value}</dd>
-              <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                {s.label}
-              </p>
+        <motion.dl
+          variants={reveal}
+          className="grid gap-x-8 gap-y-6 border-t border-border pt-8 sm:grid-cols-3"
+        >
+          {facts.map((f) => (
+            <div key={f.label}>
+              <dt className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                {f.label}
+              </dt>
+              <dd className="mt-1.5 font-heading text-xl font-semibold tracking-tight">
+                {f.value}
+              </dd>
             </div>
           ))}
         </motion.dl>
