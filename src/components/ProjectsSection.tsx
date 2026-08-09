@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
@@ -45,7 +46,10 @@ const projects: {
   },
 ];
 
-const ProjectsSection = () => (
+const ProjectsSection = () => {
+  const [selected, setSelected] = useState<string | null>(null);
+
+  return (
   <section id="work" className="section-padding shell">
     <SectionHeading
       index="02"
@@ -68,7 +72,23 @@ const ProjectsSection = () => (
       {projects.map((p, i) => (
         <motion.article key={p.title} variants={reveal} className={i % 3 === 0 ? "md:mt-0" : "md:mt-8"}>
           <TiltCard intensity={4}>
-            <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-shadow duration-500 hover:shadow-soft-lg">
+            <div
+              role="button"
+              tabIndex={0}
+              aria-pressed={selected === p.title}
+              onClick={() => setSelected(selected === p.title ? null : p.title)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setSelected(selected === p.title ? null : p.title);
+                }
+              }}
+              className={`group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border bg-card shadow-soft transition-all duration-500 hover:shadow-soft-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                selected === p.title
+                  ? "border-accent shadow-soft-lg ring-1 ring-accent/30"
+                  : "border-border"
+              }`}
+            >
               <div className="relative overflow-hidden border-b border-border bg-muted/60 p-6">
                 <span className="absolute right-5 top-5 font-mono text-[11px] tracking-[0.2em] text-muted-foreground">
                   {p.idx}
@@ -118,6 +138,7 @@ const ProjectsSection = () => (
       More work available on request →
     </motion.p>
   </section>
-);
+  );
+};
 
 export default ProjectsSection;
