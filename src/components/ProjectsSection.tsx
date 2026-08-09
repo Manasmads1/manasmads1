@@ -18,15 +18,6 @@ const projects: {
 }[] = [
   {
     idx: "01",
-    title: "Viral Reel Campaigns",
-    category: "Social Media · 2022–Present",
-    desc: "10+ organic viral reels across pages",
-    metric: "10+ viral reels",
-    tags: ["CapCut", "Alight Motion", "Hooks"],
-    kind: "reel",
-  },
-  {
-    idx: "02",
     title: "Brand Ad Creation",
     category: "Marketing & AI · 2024",
     desc: "AI-assisted ad concepts, visual storytelling for brands",
@@ -35,16 +26,16 @@ const projects: {
     kind: "ad",
   },
   {
-    idx: "03",
-    title: "Web Projects",
-    category: "Development · Ongoing",
-    desc: "Professional webpage builds with Python & HTML",
-    metric: "Shipped & ongoing",
-    tags: ["Python", "HTML", "Responsive"],
+    idx: "02",
+    title: "Full Stack Web Development",
+    category: "Full Frontend and Basics of Backend",
+    desc: "Professional webpage builds — React & Bootstrap frontends with Python and HTML foundations",
+    metric: "Frontend-led builds",
+    tags: ["React", "HTML/CSS", "Python"],
     kind: "web",
   },
   {
-    idx: "04",
+    idx: "03",
     title: "Canva Design Portfolio",
     category: "Visual Design · 2022–Present",
     desc: "End-to-end design across branding, social, and print",
@@ -64,7 +55,7 @@ const ProjectsSection = () => (
           Selected work, built to be <span className="text-gradient">seen</span>.
         </>
       }
-      lead="Four bodies of work spanning short-form video, brand advertising, web builds and visual design."
+      lead="Three bodies of work spanning brand advertising, full stack web development and visual design."
     />
 
     <motion.div
