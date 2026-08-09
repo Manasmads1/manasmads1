@@ -89,7 +89,7 @@ const HeroSection = () => {
             variants={reveal}
             className="mt-6 text-[11px] font-medium uppercase tracking-[0.3em] text-muted-foreground md:text-xs"
           >
-            Creative Technologist · Freelancer · Content Creator
+            Developer · Creative Technologist · Freelancer
           </motion.p>
 
           <motion.p
