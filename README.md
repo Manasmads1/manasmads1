@@ -1,104 +1,293 @@
-# Manas Mads Portfolio
+# Manas — Personal Portfolio 🌐
 
-Create a professional personal portfolio website for Manas Kumar, a 19-year-old multi-skilled creative technologist and freelancer based in India.
+# Live Website:
+https://manasmads1.lovable.app/
 
-🎨 DESIGN THEME & AESTHETICS
-Use a dark background (deep black #0a0a0a or #0d0d0d) with a rich red accent palette (#c0392b, #e74c3c, and subtle #7b0000 for depth). Avoid neon glows or overly flashy effects — keep it sleek, cinematic, and editorial. Think: a high-end creative agency meets a personal brand. Use subtle gradients, soft shadows, and thin red underline/divider accents instead of neon.
-Typography: Use a combination of a modern serif or geometric sans-serif for headings (e.g., Playfair Display or Syne) and a clean sans-serif for body text (e.g., Inter or DM Sans). The feel should be premium, editorial, and aesthetically intentional — not generic.
-I have attached my logo — use it in the navbar (top-left) and in the footer.
+# 👨‍💻 About Me
 
-📄 PAGES & SECTIONS
-Build a single-page scrollable portfolio with smooth scroll navigation. Include the following sections in order:
-1. HERO SECTION
+# Manas
 
-Name: Manas 
-Tagline (animated typewriter effect rotating between): "Creative Technologist" / "Freelancer & Content Creator" / "Turning Ideas into Impact"
-Short intro line: "19-year-old creator, coder, and storyteller — building real things that get noticed."
-Two CTA buttons: "See My Work" (scrolls to projects) and "Let's Connect" (scrolls to contact)
-Subtle animated background: dark red particle mesh or a very minimal animated grid — no heavy animations
+# Class 12 • CBSE • Non-Medical + Computer Science
+Frontend Developer • Creative Technologist • Learner
 
-2. ABOUT ME
+# Currently exploring:
 
-Write this copy for the section: "I'm Manas — a Non-Medical and Computer Science student with a passion for creating things that matter. From writing scripts to editing videos, designing visuals to building webpages, I work across disciplines because great ideas rarely stay in one box. I've been working on social media and digital projects since 2022, and currently operate as a freelancer while exploring affiliate marketing. I'm innovative by nature, with hands-on experience in school and real-world projects and exhibitions."
-Add a small stat row with: 2022 — Started Digital Work | 10+ Viral Reels | 3K+ Social Followers | Active Freelancer
-Include a section for Languages: Hindi (Native), English (Fluent), understands several North Indian regional languages. Content creation capability in major world languages.
-Born: 03 March 2007
+React · JavaScript · Python · AI Integration · Vibe Coding · Web Development · Digital Creativity
 
-3. SKILLS
-Use a clean grid or card layout, not boring progress bars. Group into categories:
+A modern personal portfolio designed and developed by **Manas**, combining frontend development, creative technology, AI experimentation, digital creativity, and continuous learning into one interactive web experience.
 
-🎬 Video & Motion: Video Editing (CapCut — Intermediate, DaVinci Resolve — Beginner), Alight Motion
-🎨 Design & Visuals: Canva (Intermediate — full design suite), Figma (Familiar), 3D Modelling (Beginner), Ad Creation with AI Tools
-💻 Tech & Code: Python, HTML, Professional Webpage Development, Prompt Engineering (Beginner)
-✍️ Content & Writing: Script Writing, Content Creation, Document Writing & Editing, Presentation Creation
-📱 Digital Marketing: Social Media Content Creation (passion project alongside studies), Affiliate Marketing (Active), Brand Ad Creation
+The portfolio is built to represent not only what I have learned, but also how I approach technology — through experimentation, creativity, and building things that are useful, expressive, and visually engaging.
 
-Note on Social Media: Frame the social media skills as a creative asset and plus point, not a full-time pursuit — something like a badge that says "Creator by Passion, Not Just Profession."
-4. TOOLS I USE
-Show logo/icon cards in a horizontal scrolling or grid layout: CapCut, Alight Motion, Canva, Figma, DaVinci Resolve, Python, HTML, AI Tools (various web-based)
-5. PROJECTS & WORK
-Create placeholder project cards (3–4) with a red-accent hover effect. Each card should have: Project Title, Category tag, Short Description, and a "View" button. Add a note under the section: "More work available on request — reach out directly."
-Suggested placeholder cards:
+---
 
-Viral Reel Campaigns — Social Media | 10+ reels with organic reach across pages
-Brand Ad Creation — Marketing | AI-assisted ad concepts for personal brand projects
-Web Projects — Development | Professional webpage builds using Python & HTML
-Canva Design Portfolio — Design | End-to-end design projects across categories
+## ✦ About the Portfolio
 
-6. EXPERIENCE & HIGHLIGHTS
-A minimal timeline or card row:
+This portfolio is my personal digital space where I showcase my:
 
-2022 — Started working on social media and digital content projects
-2023–24 — School and inter-school projects, exhibitions, and competitions
-2024 — Active freelancing, affiliate marketing, and expanded skill set
-Ongoing — Content creation as a creative outlet alongside Computer Science studies
+- Frontend development work
+- Web development projects
+- AI-integrated projects
+- Creative and digital work
+- Technical skills
+- Achievements and certifications
+- Events, competitions and recognitions
+- Learning journey
+- Future direction in technology
 
-7. CONTACT
-Clean, minimal contact section with a dark card background and red accents:
+I am currently a **Class 12 CBSE Non-Medical student with Computer Science**, primarily focused on frontend development while developing backend fundamentals and exploring AI integration, Vibe Coding, digital creativity and marketing.
 
-📧 Email: manas.kumar.3100@gmail.com
-💬 WhatsApp: +91 85109 46344 (add a direct WhatsApp chat link)
-📸 Instagram: @manasmads1 (link to profile)
-Add a short line: "Available for freelance projects, collaborations, and creative work. Let's build something."
-Optional: Simple contact form (Name, Email, Message, Send button)
+The website is continuously evolving alongside my skills and projects.
 
-8. FOOTER
+---
 
-Logo (from uploaded file, top-center or left)
-Short tagline: "Manas Mads — Creator. Coder. Storyteller."
-Social icons: Instagram, WhatsApp, Email
-Copyright line: "© 2025 Manas Kumar. All rights reserved."
+## 🎨 Design & Visual Direction
 
+The portfolio follows a **minimal, modern white-and-blue editorial design language**.
 
-⚙️ TECHNICAL REQUIREMENTS
+The visual system is intentionally clean rather than overly decorative, focusing on:
 
-Fully responsive (mobile-first — most visitors will be on phone)
-Smooth scroll navigation with a sticky top navbar
-Navbar items: Home | About | Skills | Work | Contact
-Logo in top-left of navbar (use the uploaded logo file)
-Subtle scroll-triggered fade-in animations on sections (no heavy motion)
-Fast loading — avoid heavy assets
-SEO meta: Title — "Manas  | Creative Technologist & Freelancer", Description — "Portfolio of Manas Mads — video editor, designer, coder, and content creator."
+- Off-white / light backgrounds
+- Deep charcoal typography
+- Blue accent elements
+- Subtle borders and shadows
+- Strong typographic hierarchy
+- Generous whitespace
+- Editorial-style layouts
+- Interactive numbered sections
+- Smooth micro-interactions
+- Responsive compositions
+- Clean card and grid systems
 
-This project was built with [Lovable](https://lovable.dev).
+The design aims to balance a **professional developer portfolio** with a **creative personal identity**.
 
-**Live app**: https://manasmads1.lovable.app
+Rather than relying on excessive gradients, neon effects or unnecessary animations, the interface focuses on typography, spacing, interaction and visual hierarchy.
 
-## Build with Lovable
+---
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/9054be63-b822-488e-83b7-0a198972cf11).
+## ✨ Key Features
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+### Interactive Hero
 
-## Development
+A clean introduction to my work and identity with:
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+- Personal introduction
+- Developer/creative positioning
+- Interactive UI elements
+- Call-to-action buttons
+- Responsive composition
 
-```sh
-git clone <this-repository-url>
+The visual experience is intentionally lightweight and does not rely on heavy 3D/WebGL scenes.
+
+### About
+
+A personal overview describing my academic background, interests, creative work, technical exploration and long-term growth.
+
+### Achievements
+
+An editorial-style interactive achievement system featuring:
+
+- Numbered entries
+- Hover interactions
+- Selected states
+- Expandable information
+- Certificate previews
+- Accessible certificate lightbox
+- Responsive mobile interaction
+
+The structure is designed so that new achievements, competitions, awards and certificates can be added without redesigning the section.
+
+### Skills
+
+Skills are grouped according to how I actually use them rather than being presented through generic percentage bars.
+
+Current areas include:
+
+- Website Development
+- Frontend Development
+- Python & backend fundamentals
+- Vibe Coding
+- Video Editing
+- Motion Graphics
+- Visual Design
+- Content Creation
+- Prompt Engineering
+- Digital Marketing
+- AI-assisted creative workflows
+
+### Work & Projects
+
+Projects are presented through an interactive interface with:
+
+- Project previews
+- Technology information
+- Categories
+- Selected states
+- Hover interactions
+- Responsive layouts
+
+The section is designed to grow as I build and publish more work.
+
+### Journey
+
+A timeline representing my development from early curiosity about technology to my current stage of building projects and experimenting with AI, frontend development, Vibe Coding and digital creativity.
+
+It is structured around stages of growth rather than simply listing dates.
+
+### Contact
+
+A dedicated contact experience with:
+
+- Email
+- WhatsApp
+- Instagram
+- Discord
+- LinkedIn
+- Contact form
+- Responsive contact cards
+- Clipboard interaction for Discord
+- Personal closing message
+
+---
+
+## 💻 Technology Stack
+
+The portfolio is primarily developed using modern frontend technologies.
+
+### Frontend
+
+- **React**
+- **TypeScript**
+- **JavaScript**
+- **HTML5**
+- **CSS3**
+
+### Styling & UI
+
+- **Tailwind CSS**
+- **Responsive CSS**
+- **Lucide React**
+- **Radix UI**
+- Custom reusable UI components
+
+### Animation & Interaction
+
+- **Framer Motion**
+- CSS transitions
+- Scroll-based interactions
+- Micro-interactions
+- Responsive motion
+- Reduced-motion accessibility support
+
+### Development
+
+- **Vite**
+- **Node.js**
+- **npm**
+- **Git**
+- **GitHub**
+
+### Additional Technologies / Skills represented in the portfolio
+
+- Python
+- React
+- Bootstrap
+- AI-assisted development
+- Vibe Coding
+- AI integration
+- Prompt Engineering
+
+---
+
+## 🧩 Architecture & Development Approach
+
+The portfolio is built with a component-based architecture to keep the code maintainable and scalable.
+
+Major UI elements are separated into reusable components rather than being written as one large page.
+
+The project follows principles such as:
+
+- Reusable components
+- Semantic HTML
+- Responsive design
+- Accessible interactions
+- Consistent design tokens
+- Modular data structures
+- Performance-conscious animations
+- Clean component organization
+
+Achievements and other repeatable content are structured so new entries can be added without rebuilding the UI.
+
+---
+
+## 📱 Responsive Design
+
+The website is designed for:
+
+- Mobile
+- Tablet
+- Laptop
+- Desktop
+- Large displays
+
+Special attention is given to:
+
+- Touch interactions
+- Responsive typography
+- Navigation
+- Achievement expansion
+- Certificate viewing
+- Project interactions
+- Contact forms
+- Avoiding horizontal overflow
+
+---
+
+## ♿ Accessibility & Performance
+
+The portfolio is designed with accessibility and performance in mind.
+
+Features include:
+
+- Semantic landmarks
+- Keyboard-friendly interactions
+- Visible focus states
+- Accessible buttons
+- Proper form labels
+- Image alternative text
+- Reduced-motion support
+- Lightweight animations
+- Responsive layouts
+- Minimal unnecessary dependencies
+
+The goal is to make the site feel polished without sacrificing usability or loading performance.
+
+---
+
+## 🧠 My Approach
+
+I don't see this portfolio as a finished website.
+
+It is an evolving representation of what I am learning and building.
+
+My current focus is primarily **frontend development**, while I continue developing backend fundamentals, experimenting with AI integration and Vibe Coding, and exploring the intersection of technology, creativity and digital work.
+
+Long term, I want to build a strong foundation toward becoming a **Data Scientist**.
+
+---
+
+## 🚀 Development
+
+This portfolio is continuously developed and refined as I learn new technologies and build new projects.
+
+The development workflow includes modern AI-assisted development tools where useful, but the project itself is structured, reviewed, customized and maintained as my own portfolio codebase.
+
+### Run locally and accessible while searching for it. 
+
+```bash
+git clone <repository-url>
+
 cd <repository-name>
-npm i
+
+npm install
+
 npm run dev
-```
