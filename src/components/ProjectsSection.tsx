@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
@@ -18,15 +19,6 @@ const projects: {
 }[] = [
   {
     idx: "01",
-    title: "Viral Reel Campaigns",
-    category: "Social Media · 2022–Present",
-    desc: "10+ organic viral reels across pages",
-    metric: "10+ viral reels",
-    tags: ["CapCut", "Alight Motion", "Hooks"],
-    kind: "reel",
-  },
-  {
-    idx: "02",
     title: "Brand Ad Creation",
     category: "Marketing & AI · 2024",
     desc: "AI-assisted ad concepts, visual storytelling for brands",
@@ -35,16 +27,16 @@ const projects: {
     kind: "ad",
   },
   {
-    idx: "03",
-    title: "Web Projects",
-    category: "Development · Ongoing",
-    desc: "Professional webpage builds with Python & HTML",
-    metric: "Shipped & ongoing",
-    tags: ["Python", "HTML", "Responsive"],
+    idx: "02",
+    title: "Full Stack Web Development",
+    category: "Full Frontend and Basics of Backend",
+    desc: "Professional webpage builds — React & Bootstrap frontends with Python and HTML foundations",
+    metric: "Frontend-led builds",
+    tags: ["React", "HTML/CSS", "Python"],
     kind: "web",
   },
   {
-    idx: "04",
+    idx: "03",
     title: "Canva Design Portfolio",
     category: "Visual Design · 2022–Present",
     desc: "End-to-end design across branding, social, and print",
@@ -54,7 +46,10 @@ const projects: {
   },
 ];
 
-const ProjectsSection = () => (
+const ProjectsSection = () => {
+  const [selected, setSelected] = useState<string | null>(null);
+
+  return (
   <section id="work" className="section-padding shell">
     <SectionHeading
       index="02"
@@ -64,7 +59,7 @@ const ProjectsSection = () => (
           Selected work, built to be <span className="text-gradient">seen</span>.
         </>
       }
-      lead="Four bodies of work spanning short-form video, brand advertising, web builds and visual design."
+      lead="Three bodies of work spanning brand advertising, full stack web development and visual design."
     />
 
     <motion.div
@@ -77,7 +72,23 @@ const ProjectsSection = () => (
       {projects.map((p, i) => (
         <motion.article key={p.title} variants={reveal} className={i % 3 === 0 ? "md:mt-0" : "md:mt-8"}>
           <TiltCard intensity={4}>
-            <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-shadow duration-500 hover:shadow-soft-lg">
+            <div
+              role="button"
+              tabIndex={0}
+              aria-pressed={selected === p.title}
+              onClick={() => setSelected(selected === p.title ? null : p.title)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setSelected(selected === p.title ? null : p.title);
+                }
+              }}
+              className={`group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border bg-card shadow-soft transition-all duration-500 hover:shadow-soft-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+                selected === p.title
+                  ? "border-accent shadow-soft-lg ring-1 ring-accent/30"
+                  : "border-border"
+              }`}
+            >
               <div className="relative overflow-hidden border-b border-border bg-muted/60 p-6">
                 <span className="absolute right-5 top-5 font-mono text-[11px] tracking-[0.2em] text-muted-foreground">
                   {p.idx}
@@ -127,6 +138,7 @@ const ProjectsSection = () => (
       More work available on request →
     </motion.p>
   </section>
-);
+  );
+};
 
 export default ProjectsSection;

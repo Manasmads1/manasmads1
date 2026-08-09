@@ -5,29 +5,24 @@ import { reveal, stagger, viewportOnce } from "@/lib/motion";
 const groups = [
   {
     index: "01",
-    title: "Website Development",
-    note: "Frontend Developer",
+    title: "Full Stack Web Development",
+    note: "Full Frontend and Basics of Backend",
     skills: [
       { name: "HTML", level: "INTERMEDIATE" },
       { name: "CSS", level: "INTERMEDIATE" },
       { name: "JavaScript", level: "INTERMEDIATE" },
       { name: "React", level: "INTERMEDIATE" },
       { name: "Bootstrap", level: "INTERMEDIATE" },
+      { name: "Python", level: "DEVELOPING BACKEND" },
     ],
   },
   {
     index: "02",
-    title: "Programming / Backend",
-    note: "Developing knowledge",
-    skills: [{ name: "Python", level: "INTERMEDIATE" }],
-  },
-  {
-    index: "03",
     title: "Creative Workflow",
     skills: [{ name: "Vibe Coding", level: "ACTIVE" }],
   },
   {
-    index: "04",
+    index: "03",
     title: "Video, Design & Content",
     skills: [
       { name: "Video Editing (CapCut / DaVinci)", level: "INTERMEDIATE" },
@@ -49,6 +44,7 @@ const levelStyles: Record<string, string> = {
   INTERMEDIATE: "bg-accent-soft text-accent",
   PROFICIENT: "bg-primary text-primary-foreground",
   ACTIVE: "bg-[hsl(140_60%_45%/0.14)] text-[hsl(140_55%_28%)]",
+  "DEVELOPING BACKEND": "bg-accent-soft text-accent",
   "CREATOR BY PASSION": "bg-[hsl(24_85%_50%/0.14)] text-[hsl(24_75%_38%)]",
 };
 

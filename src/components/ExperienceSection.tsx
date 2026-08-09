@@ -4,10 +4,31 @@ import SectionHeading from "@/components/SectionHeading";
 import { reveal, viewportOnce } from "@/lib/motion";
 
 const timeline = [
-  { year: "2022", desc: "Entered the digital space. First content, first reels, first reach." },
-  { year: "2023", desc: "School projects, exhibitions, competitions. Built things that mattered." },
-  { year: "2024", desc: "Went freelance. Expanded skills. Started affiliate marketing." },
-  { year: "2025 →", desc: "Ongoing. Computer Science studies + creative work. Building what's next." },
+  {
+    stage: "Middle School",
+    role: "",
+    desc: "Where the curiosity started — experimenting with technology, discovering programming, learning new languages, and gradually developing an enthusiasm for building things. Alongside tech, I also began exploring fitness and other interests that shaped my discipline.",
+  },
+  {
+    stage: "Secondary School",
+    role: "",
+    desc: "Curiosity turned into consistency — I started deliberately building my skills, exploring creative and technical work, participating in competitions and events, and collecting a few wins along the way.",
+  },
+  {
+    stage: "Senior Secondary",
+    role: "Building & Integrating",
+    desc: "Now, in Class 12, the focus has shifted from simply learning technologies to putting them together — developing full frontend experiences, strengthening backend fundamentals, and integrating AI into projects to turn ideas into working solutions.",
+  },
+  {
+    stage: "Beyond the Build",
+    role: "Exploration layer",
+    desc: "Beyond writing code, I'm exploring where technology meets creativity — experimenting with Vibe Coding, marketing, digital creation, and new ways of turning ideas into something people can actually experience.",
+  },
+  {
+    stage: "Ultimate Goal",
+    role: "Data Scientist — aspiration",
+    desc: "To eventually move deeper into data, intelligence and problem-solving — building the foundation to become a Data Scientist who can turn information into meaningful insights and intelligent solutions.",
+  },
 ];
 
 const ExperienceSection = () => {
@@ -26,7 +47,7 @@ const ExperienceSection = () => {
         label="Journey"
         title={
           <>
-            Four years of <span className="text-gradient">compounding</span>.
+            A journey of <span className="text-gradient">compounding</span> curiosity.
           </>
         }
       />
@@ -50,7 +71,7 @@ const ExperienceSection = () => {
         <ol className="space-y-14 md:space-y-20">
           {timeline.map((item, i) => (
             <motion.li
-              key={item.year}
+              key={item.stage}
               initial="hidden"
               whileInView="show"
               viewport={viewportOnce}
@@ -63,9 +84,17 @@ const ExperienceSection = () => {
               />
 
               <div className={i % 2 === 0 ? "md:pr-4 md:text-right" : "md:order-2 md:pl-4"}>
-                <span className="font-heading text-4xl font-semibold tracking-tight text-foreground/20 md:text-5xl">
-                  {item.year}
+                <span className="block font-mono text-[10.5px] uppercase tracking-[0.2em] text-accent">
+                  {String(i + 1).padStart(2, "0")}
                 </span>
+                <span className="mt-1 block font-heading text-3xl font-semibold leading-[1.1] tracking-tight text-foreground/30 md:text-4xl">
+                  {item.stage}
+                </span>
+                {item.role && (
+                  <span className="mt-1.5 block font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                    {item.role}
+                  </span>
+                )}
               </div>
 
               <div className={i % 2 === 0 ? "md:pl-4" : "md:order-1 md:pr-4 md:text-right"}>
