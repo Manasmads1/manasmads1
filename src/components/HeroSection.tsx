@@ -7,7 +7,7 @@ import ContributionGrid from "@/components/hero/ContributionGrid";
 import CodeSnippetCard from "@/components/hero/CodeSnippetCard";
 import HeroPortrait from "@/components/hero/HeroPortrait";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { EASE, reveal, stagger } from "@/lib/motion";
+import { reveal, stagger } from "@/lib/motion";
 
 const roles = [
   "I build things that get noticed.",
@@ -151,56 +151,25 @@ const HeroSection = () => {
 
         {/* Editorial identity module: portrait anchored by supporting dev cards */}
         <div className="relative mx-auto w-full max-w-[26rem] lg:mx-0 lg:max-w-none lg:justify-self-end">
-          {/* desktop: floating supporting cards around the portrait */}
-          <motion.div
-            initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ delay: 0.55, duration: 0.9, ease: EASE }}
-            className="pointer-events-none absolute -left-28 -top-12 z-20 hidden origin-top-left scale-[0.82] xl:block"
-          >
-            <motion.div
-              animate={reduced ? undefined : { y: [0, -6, 0] }}
-              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <TerminalCard />
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ delay: 0.7, duration: 0.9, ease: EASE }}
-            className="pointer-events-none absolute -right-10 top-[38%] z-20 hidden origin-top-right scale-[0.78] xl:block"
-          >
-            <CodeSnippetCard />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ delay: 0.85, duration: 0.9, ease: EASE }}
-            className="pointer-events-none absolute bottom-[26%] -left-40 z-0 hidden origin-bottom-left scale-[0.76] xl:block"
-          >
-            <motion.div
-              animate={reduced ? undefined : { y: [0, 7, 0] }}
-              transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <ContributionGrid />
-            </motion.div>
-          </motion.div>
-
           <HeroPortrait />
 
-          {/* below-xl and mobile: cards flow normally under the module */}
+          {/* supporting dev cards flow below the portrait, revealed on scroll */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.8, ease: EASE }}
-            className="mt-10 flex flex-wrap items-start justify-center gap-5 xl:hidden"
+            variants={stagger(0.12, 0.14)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.15 }}
+            className="mt-12 flex flex-col items-stretch gap-6"
           >
-            <TerminalCard />
-            <CodeSnippetCard />
-            <ContributionGrid />
+            <motion.div variants={reveal}>
+              <TerminalCard />
+            </motion.div>
+            <motion.div variants={reveal}>
+              <CodeSnippetCard />
+            </motion.div>
+            <motion.div variants={reveal}>
+              <ContributionGrid />
+            </motion.div>
           </motion.div>
         </div>
       </motion.div>
