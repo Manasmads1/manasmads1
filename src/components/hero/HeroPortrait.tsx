@@ -25,9 +25,9 @@ const HeroPortrait = () => (
         className="mx-auto w-full max-w-[22rem] select-none object-contain mix-blend-multiply drop-shadow-[0_28px_50px_hsl(210_11%_15%/0.10)] lg:max-w-none"
         style={{
           maskImage:
-            "radial-gradient(120% 105% at 50% 42%, #000 58%, transparent 92%)",
+            "radial-gradient(92% 88% at 50% 45%, #000 42%, transparent 82%)",
           WebkitMaskImage:
-            "radial-gradient(120% 105% at 50% 42%, #000 58%, transparent 92%)",
+            "radial-gradient(92% 88% at 50% 45%, #000 42%, transparent 82%)",
         }}
       />
     </motion.div>
@@ -36,7 +36,7 @@ const HeroPortrait = () => (
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.75, duration: 0.8, ease: EASE }}
-      className="mx-auto mt-2 grid max-w-[24rem] grid-cols-3 divide-x divide-border border-t border-border pt-5 lg:max-w-none"
+      className="relative z-10 mx-auto -mt-2 grid max-w-[24rem] grid-cols-3 divide-x divide-border border-t border-border pt-5 lg:max-w-none"
     >
       {stats.map((s) => (
         <div key={s.value} className="px-3 text-center first:pl-0 last:pr-0">
