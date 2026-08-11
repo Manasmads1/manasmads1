@@ -7,7 +7,7 @@ import ContributionGrid from "@/components/hero/ContributionGrid";
 import CodeSnippetCard from "@/components/hero/CodeSnippetCard";
 import HeroPortrait from "@/components/hero/HeroPortrait";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { EASE, reveal, stagger } from "@/lib/motion";
+import { reveal, stagger } from "@/lib/motion";
 
 const roles = [
   "I build things that get noticed.",
