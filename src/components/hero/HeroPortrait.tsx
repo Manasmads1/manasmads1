@@ -22,12 +22,12 @@ const HeroPortrait = () => (
         alt="Pencil-sketch portrait of Manas"
         loading="eager"
         decoding="async"
-        className="mx-auto w-full max-w-[22rem] select-none object-contain mix-blend-multiply drop-shadow-[0_28px_50px_hsl(210_11%_15%/0.10)] lg:max-w-none"
+        className="mx-auto w-full max-w-[20rem] select-none object-contain mix-blend-multiply lg:max-w-[24rem] xl:max-w-[26rem]"
         style={{
           maskImage:
-            "radial-gradient(92% 88% at 50% 45%, #000 42%, transparent 82%)",
+            "radial-gradient(78% 76% at 50% 44%, #000 38%, transparent 74%)",
           WebkitMaskImage:
-            "radial-gradient(92% 88% at 50% 45%, #000 42%, transparent 82%)",
+            "radial-gradient(78% 76% at 50% 44%, #000 38%, transparent 74%)",
         }}
       />
     </motion.div>
