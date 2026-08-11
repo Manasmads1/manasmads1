@@ -156,7 +156,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ delay: 0.55, duration: 0.9, ease: EASE }}
-            className="pointer-events-none absolute -left-24 -top-6 z-20 hidden origin-top-left scale-[0.82] xl:block"
+            className="pointer-events-none absolute -left-28 -top-12 z-20 hidden origin-top-left scale-[0.82] xl:block"
           >
             <motion.div
               animate={reduced ? undefined : { y: [0, -6, 0] }}
@@ -179,7 +179,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ delay: 0.85, duration: 0.9, ease: EASE }}
-            className="pointer-events-none absolute -bottom-14 -left-20 z-20 hidden origin-bottom-left scale-[0.76] xl:block"
+            className="pointer-events-none absolute bottom-[26%] -left-40 z-0 hidden origin-bottom-left scale-[0.76] xl:block"
           >
             <motion.div
               animate={reduced ? undefined : { y: [0, 7, 0] }}
