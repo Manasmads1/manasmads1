@@ -1,9 +1,10 @@
 import portrait from "@/assets/manas-portrait.png.asset.json";
 import { ContactButton, FadeIn, Magnet } from "@/components/dark/primitives";
+import ThemeSwitch from "@/components/ThemeSwitch";
 
 const navLinks = [
   { label: "About", href: "#dark-about" },
-  { label: "Skills", href: "#dark-services" },
+  { label: "Price", href: "#dark-services" },
   { label: "Projects", href: "#dark-projects" },
   { label: "Contact", href: "#dark-contact" },
 ];
@@ -13,8 +14,8 @@ const DarkHero = () => (
     className="relative flex h-screen flex-col"
     style={{ overflowX: "clip", background: "#0C0C0C" }}
   >
-    <FadeIn delay={0} y={-20}>
-      <nav className="flex items-center justify-between px-6 pt-6 md:px-10 md:pt-8">
+      <FadeIn delay={0} y={-20}>
+      <nav className="relative flex items-center justify-between px-6 pr-20 pt-6 md:px-10 md:pr-24 md:pt-8">
         {navLinks.map((l) => (
           <a
             key={l.label}
@@ -25,6 +26,9 @@ const DarkHero = () => (
           </a>
         ))}
       </nav>
+      <div className="fixed right-6 top-20 z-50 md:right-10">
+        <ThemeSwitch isDark />
+      </div>
     </FadeIn>
 
     <div className="overflow-hidden px-4">
