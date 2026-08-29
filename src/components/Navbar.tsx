@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { EASE } from "@/lib/motion";
+import ThemeSwitch from "@/components/ThemeSwitch";
 
 const navItems = [
   { label: "About", id: "about" },
@@ -102,6 +103,7 @@ const Navbar = () => {
           </ul>
 
           <div className="hidden items-center gap-2 md:flex">
+            <ThemeSwitch />
             <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3 py-1.5 text-[11px] text-muted-foreground">
               <span className="h-1.5 w-1.5 animate-dot-pulse rounded-full bg-[hsl(140_55%_42%)]" />
               Available
