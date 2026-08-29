@@ -166,6 +166,13 @@
     font-family: 'Kanit', system-ui, sans-serif;
   }
 
+  .hero-heading {
+    background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   .dark-control {
     color: #D7E2EA;
     border: 1px solid rgba(215, 226, 234, 0.35);
