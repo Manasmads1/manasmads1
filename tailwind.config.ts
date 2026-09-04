@@ -17,7 +17,6 @@ export default {
         heading: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
         body: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
-        dark: ['Kanit', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'display': ['clamp(2.75rem, 7vw, 6rem)', { lineHeight: '0.95', letterSpacing: '-0.03em' }],
