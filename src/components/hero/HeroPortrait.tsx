@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import portrait from "@/assets/manas-portrait.png.asset.json";
 import { EASE } from "@/lib/motion";
 
 const stats = [
