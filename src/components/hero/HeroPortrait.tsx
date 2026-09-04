@@ -17,7 +17,7 @@ const HeroPortrait = () => (
       className="relative"
     >
       <img
-        src={portrait.url}
+        src="/MANAS.png"
         alt="Pencil-sketch portrait of Manas"
         loading="eager"
         decoding="async"
