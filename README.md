@@ -1,7 +1,7 @@
 # Manas — Personal Portfolio 🌐
 
 # Live Website:
-https://manasmads1.lovable.app/
+https://manasmads.xyz/ or https://www.manasmads.xyz/ 
 
 # 👨‍💻 About Me
 
