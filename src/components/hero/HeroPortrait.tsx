@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import portrait from "@/assets/manas-portrait.png.asset.json";
 import { EASE } from "@/lib/motion";
 
 const stats = [
@@ -18,7 +17,7 @@ const HeroPortrait = () => (
       className="relative"
     >
       <img
-        src={portrait.url}
+        src="/MANAS.png"
         alt="Pencil-sketch portrait of Manas"
         loading="eager"
         decoding="async"
