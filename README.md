@@ -1,4 +1,4 @@
-# Manas — Personal Portfolio 🌐
+# Manas ✨
 
 # Live Website:
 https://manasmads.xyz/ or https://www.manasmads.xyz/ 
