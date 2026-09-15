@@ -15,21 +15,20 @@ const artwork: Record<Exclude<ProjectMockupKind, "reel">, { src: string; alt: st
   },
 };
 
-/** Original supplied project artwork, cropped into three responsive showcase panels. */
-const ProjectMockup = ({ kind }: { kind: ProjectMockupKind }) => {
+type Props = {
+  kind: ProjectMockupKind;
+  index: string;
+};
+
+/** Fixed-ratio reference header: the source artwork is already composed for this frame. */
+const ProjectMockup = ({ kind, index }: Props) => {
   if (kind === "reel") return null;
   const item = artwork[kind];
 
   return (
-    <div className="relative -mx-2 flex h-40 items-center justify-center overflow-hidden rounded-xl md:h-44">
-      <img
-        src={item.src}
-        alt={item.alt}
-        loading="lazy"
-        decoding="async"
-        className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.035]"
-      />
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-foreground/10 via-transparent to-white/10 opacity-70" />
+    <div className="project-art-frame">
+      <img src={item.src} alt={item.alt} loading="lazy" decoding="async" />
+      <span className="project-art-index">{index}</span>
     </div>
   );
 };

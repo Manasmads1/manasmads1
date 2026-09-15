@@ -101,11 +101,8 @@ const ProjectsSection = () => {
               }}
               className="relative flex h-full flex-col"
             >
-              <div className="relative overflow-hidden border-b border-border bg-muted/60 p-6">
-                <span className="absolute right-5 top-5 font-mono text-[11px] tracking-[0.2em] text-muted-foreground">
-                  {p.idx}
-                </span>
-                <ProjectMockup kind={p.kind} />
+              <div className="relative overflow-hidden border-b border-border bg-muted/60">
+                <ProjectMockup kind={p.kind} index={p.idx} />
               </div>
 
               <div className="flex flex-1 flex-col gap-3 p-6 md:p-7">

@@ -66,6 +66,9 @@
   .spotlight-card { position: relative; isolation: isolate; overflow: hidden; }
   .spotlight-card::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0; background: radial-gradient(320px circle at var(--spotlight-x) var(--spotlight-y), hsl(var(--accent) / 0.14), transparent 68%); transition: opacity 400ms ease; }
   .spotlight-card:hover::before { opacity: 1; }
+  .project-art-frame { position: relative; aspect-ratio: 2.45 / 1; overflow: hidden; background: hsl(var(--muted)); }
+  .project-art-frame img { display: block; height: 100%; width: 100%; object-fit: fill; }
+  .project-art-index { position: absolute; right: .85rem; top: .72rem; z-index: 3; border: 1px solid hsl(var(--foreground) / .12); border-radius: 999px; background: hsl(var(--card) / .82); padding: .28rem .48rem; color: hsl(var(--foreground) / .72); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: .18em; line-height: 1; backdrop-filter: blur(8px); }
   .project-float-badge { position: absolute; z-index: 2; display: inline-flex; min-height: 2.25rem; min-width: 2.25rem; align-items: center; justify-content: center; gap: .35rem; border: 1px solid hsl(var(--border)); border-radius: .7rem; background: hsl(var(--card) / .92); padding: .5rem; box-shadow: 0 10px 24px -14px hsl(var(--foreground) / .42); backdrop-filter: blur(10px); transition: transform 500ms var(--ease-out-expo), box-shadow 500ms var(--ease-out-expo); }
   .group:hover .project-float-badge { transform: translateY(-4px); box-shadow: 0 16px 28px -16px hsl(var(--accent) / .45); }
   [data-interactive="true"] { width: 2.25rem; height: 2.25rem; background: hsl(var(--accent) / .08); }
