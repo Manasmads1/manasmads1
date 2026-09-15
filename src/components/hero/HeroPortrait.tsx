@@ -16,11 +16,6 @@ const HeroPortrait = () => (
       transition={{ delay: 0.35, duration: 1, ease: EASE }}
       className="relative"
     >
-      <div aria-hidden="true" className="pointer-events-none absolute inset-[7%] -z-10 rounded-full border border-accent/20 shadow-[0_0_90px_hsl(var(--accent)/0.12)]">
-        <span className="hero-orbit absolute -left-1.5 top-1/2 h-3 w-3 rounded-full bg-accent shadow-[0_0_22px_hsl(var(--accent)/0.8)]" />
-        <span className="hero-orbit-reverse absolute right-[14%] top-[8%] h-2 w-2 rounded-full bg-foreground/40" />
-      </div>
-      <div aria-hidden="true" className="pointer-events-none absolute inset-[17%] -z-10 rounded-full border border-dashed border-foreground/10 hero-orbit-reverse" />
       <img
         src="/MANAS.png"
         alt="Pencil-sketch portrait of Manas"
