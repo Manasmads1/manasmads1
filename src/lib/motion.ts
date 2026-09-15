@@ -19,12 +19,13 @@ export const springSoft: Transition = {
 
 /** Layered reveal: blur + lift + scale, never a plain fade. */
 export const reveal: Variants = {
-  hidden: { opacity: 0, y: 28, filter: "blur(10px)" },
+  hidden: { opacity: 0, y: 28, filter: "blur(10px)", scale: 0.985 },
   show: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.9, ease: EASE },
+    scale: 1,
+    transition: { duration: 0.85, ease: EASE },
   },
 };
 
@@ -38,4 +39,5 @@ export const stagger = (delayChildren = 0, staggerChildren = 0.08): Variants => 
   show: { transition: { delayChildren, staggerChildren } },
 });
 
-export const viewportOnce = { once: true, margin: "-12% 0px -12% 0px" } as const;
+// Fire before the section hits the viewport edge so content is never stranded blank.
+export const viewportOnce = { once: true, margin: "0px 0px -18% 0px", amount: 0.05 } as const;

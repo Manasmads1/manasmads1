@@ -83,7 +83,7 @@ const ProjectsSection = () => {
                   setSelected(selected === p.title ? null : p.title);
                 }
               }}
-              className={`group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border bg-card shadow-soft transition-all duration-500 hover:shadow-soft-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
+              className={`group shine-surface interactive-lift relative flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border bg-card shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ${
                 selected === p.title
                   ? "border-accent shadow-soft-lg ring-1 ring-accent/30"
                   : "border-border"
