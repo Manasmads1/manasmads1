@@ -2,6 +2,7 @@ import certGenAI from "@/assets/cert-genai.jpg";
 import certTakumi from "@/assets/cert-takumi.jpg";
 import certPowerBI from "@/assets/cert-powerbi.jpg";
 import certSpaceQuiz from "@/assets/cert-space-quiz.jpg";
+import certOverclockDelhi from "@/assets/cert-overclock-delhi.png";
 
 export type Achievement = {
   id: string;
@@ -21,6 +22,18 @@ export type Achievement = {
  * Append new entries here — the section renders any length without changes.
  */
 export const achievements: Achievement[] = [
+  {
+    id: "overclock-delhi-2026",
+    title: "Overclock Delhi — 1st Place",
+    description:
+      "Secured 1st position at OVERCLOCK DELHI, an Alternate Reality Game × Hackathon event celebrating exploration, teamwork, and problem-solving.",
+    issuer: "Overclock Delhi",
+    category: "Competition",
+    year: "2026",
+    level: "1st Place",
+    image: certOverclockDelhi,
+    imageAlt: "Certificate of achievement for 1st place at Overclock Delhi, dated 30 August 2026",
+  },
   {
     id: "genai-mastermind",
     title: "Generative AI Mastermind",
