@@ -3,6 +3,7 @@ import certTakumi from "@/assets/cert-takumi.jpg";
 import certPowerBI from "@/assets/cert-powerbi.jpg";
 import certSpaceQuiz from "@/assets/cert-space-quiz.jpg";
 import certOverclockDelhi from "@/assets/cert-overclock-delhi.png";
+import certWebsiteDevelopmentInternship from "@/assets/cert-website-development-internship.png";
 
 export type Achievement = {
   id: string;
@@ -15,6 +16,7 @@ export type Achievement = {
   level?: string;
   image?: string;
   imageAlt?: string;
+  documentUrl?: string;
 };
 
 /**
@@ -22,6 +24,19 @@ export type Achievement = {
  * Append new entries here — the section renders any length without changes.
  */
 export const achievements: Achievement[] = [
+  {
+    id: "certified-website-developer",
+    title: "Certified Website Developer (Frontend + Backend)",
+    description:
+      "Completed the Website Design and Development Internship at Internship Studio from 15 July to 18 October 2026.",
+    issuer: "Internship Studio",
+    category: "Internship Certificate",
+    year: "2026",
+    level: "Frontend + Backend",
+    image: certWebsiteDevelopmentInternship,
+    imageAlt: "Internship Studio certificate for the Website Design and Development Internship, awarded to Manas",
+    documentUrl: "/certificates/certified-website-developer-frontend-backend.pdf",
+  },
   {
     id: "overclock-delhi-2026",
     title: "Overclock Delhi — 1st Place",

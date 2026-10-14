@@ -143,7 +143,7 @@ const ContactSection = () => {
             "group flex w-full items-center gap-4 rounded-2xl border border-border bg-card p-5 shadow-soft transition-all duration-500 hover:-translate-y-0.5 hover:shadow-soft-md";
 
           return (
-            <motion.li key={label} variants={reveal}>
+            <motion.li key={label} variants={reveal} className="min-w-0">
               {copy ? (
                 <button type="button" onClick={copyDiscord} className={cls} aria-label={`Copy Discord username ${value}`}>
                   {inner}

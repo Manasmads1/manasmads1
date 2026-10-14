@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Expand, Plus } from "lucide-react";
+import { Expand, FileDown, Plus } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { achievements, type Achievement } from "@/data/achievements";
@@ -10,7 +10,7 @@ const meta = (a: Achievement) =>
   [a.issuer, a.category, a.level, a.year].filter(Boolean).join(" · ");
 
 const AchievementsSection = () => {
-  const [openId, setOpenId] = useState<string | null>(achievements[0]?.id ?? null);
+  const [openId, setOpenId] = useState<string | null>(null);
   const [lightbox, setLightbox] = useState<Achievement | null>(null);
 
   return (
@@ -117,6 +117,17 @@ const AchievementsSection = () => {
                               </div>
                             ))}
                         </dl>
+                        {a.documentUrl && (
+                          <a
+                            href={a.documentUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex max-w-full items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+                          >
+                            <FileDown size={16} aria-hidden="true" />
+                            <span>View original certificate (PDF)</span>
+                          </a>
+                        )}
                       </div>
 
                       {a.image && (

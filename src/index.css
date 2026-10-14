@@ -40,11 +40,11 @@
   body {
     @apply bg-background text-foreground font-body antialiased;
     cursor: default;
-    overflow-x: hidden;
+    overflow-x: clip;
     background-image: radial-gradient(circle at 50% -10%, hsl(var(--accent) / 0.045), transparent 34rem);
   }
   h1, h2, h3, h4, h5, h6 { @apply font-heading tracking-tight; }
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: clip; }
   ::selection { background: hsl(var(--accent) / 0.18); color: hsl(var(--foreground)); }
   :focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 3px; border-radius: 4px; }
 }
