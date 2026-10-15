@@ -4,6 +4,7 @@ import certPowerBI from "@/assets/cert-powerbi.jpg";
 import certSpaceQuiz from "@/assets/cert-space-quiz.jpg";
 import certOverclockDelhi from "@/assets/cert-overclock-delhi.png";
 import certWebsiteDevelopmentInternship from "@/assets/cert-website-development-internship.png";
+import certCyberSecurity from "@/assets/cert-cyber-security.jpg";
 
 export type Achievement = {
   id: string;
@@ -91,5 +92,18 @@ export const achievements: Achievement[] = [
     level: "National",
     image: certSpaceQuiz,
     imageAlt: "National Space Day Quiz certificate of participation from ISRO and MyGov",
+  },
+  {
+    id: "cyber-security",
+    title: "Cyber Security",
+    description:
+      "Completed the online session “Password and Wi-Fi Security: Securing Digital Space”, conducted by C-DAC, Noida in association with CERT-In and sponsored by the Ministry of Electronics and Information Technology during Cyber Security Awareness Month in October 2021.",
+    issuer: "C-DAC, Noida · CERT-In",
+    category: "Certificate of Appreciation",
+    year: "2021",
+    level: "Online Session",
+    image: certCyberSecurity,
+    imageAlt:
+      "C-DAC and CERT-In certificate of appreciation for the Password and Wi-Fi Security online session",
   },
 ];
