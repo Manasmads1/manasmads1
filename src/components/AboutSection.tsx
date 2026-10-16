@@ -20,7 +20,7 @@ const AboutSection = () => (
         whileInView="show"
         viewport={viewportOnce}
         variants={reveal}
-        className="font-heading text-display font-semibold leading-[1.02]"
+        className="font-display text-display font-semibold leading-[1.02]"
       >
         Creative.
         <br />

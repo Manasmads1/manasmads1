@@ -30,7 +30,7 @@ const SectionHeading = ({ index, label, title, lead, align = "left", className }
     </span>
 
     {title && (
-      <h2 className="font-heading font-semibold text-headline max-w-3xl text-balance">{title}</h2>
+      <h2 className="font-display font-semibold text-headline max-w-3xl text-balance">{title}</h2>
     )}
 
     {lead && (

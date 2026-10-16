@@ -81,7 +81,7 @@ const HeroSection = () => {
 
           <motion.h1
             variants={reveal}
-            className="font-heading text-display font-semibold"
+            className="font-display text-display font-semibold"
           >
             MANAS
           </motion.h1>
