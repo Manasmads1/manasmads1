@@ -36,9 +36,11 @@ const readPortraitParticles = (image: HTMLImageElement, limit: number): Omit<Par
   for (let y = 0; y < SAMPLE_SIZE; y += 1) {
     for (let x = 0; x < SAMPLE_SIZE; x += 1) {
       const offset = (y * SAMPLE_SIZE + x) * 4;
+      const opacity = pixels[offset + 3] / 255;
+      if (opacity < 0.035) continue;
       const luminance =
         pixels[offset] * 0.2126 + pixels[offset + 1] * 0.7152 + pixels[offset + 2] * 0.0722;
-      const ink = 255 - luminance;
+      const ink = (255 - luminance) * opacity;
       if (ink < 8) continue;
 
       const seed = noiseAt(x, y);
