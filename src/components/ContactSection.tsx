@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MessageCircle, Instagram, Linkedin, ArrowRight, Copy } from "lucide-react";
+import { Mail, MessageCircle, Instagram, Linkedin, Github, ArrowRight, Copy } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 import SectionHeading from "@/components/SectionHeading";
@@ -59,6 +59,13 @@ const channels: Channel[] = [
     value: "in/manasmads1",
     href: "https://www.linkedin.com/in/manasmads1/",
     Icon: ({ size }) => <Linkedin size={size} aria-hidden="true" />,
+    external: true,
+  },
+  {
+    label: "GitHub",
+    value: "github.com/Manasmads1",
+    href: "https://github.com/Manasmads1",
+    Icon: ({ size }) => <Github size={size} aria-hidden="true" />,
     external: true,
   },
 ];
